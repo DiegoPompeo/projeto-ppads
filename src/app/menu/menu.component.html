@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="row">
         <div *ngIf="authService.isAuthenticated()">
-            <a routerLink="/update" class="btn btn-info">Atualizar</a>
-            <a routerLink="/profile" class="btn btn-info">Ver Perfil</a>
-            <a routerLink="/cientists" class="btn btn-info">Cientistas</a>
-            <button class="logout btn btn-info" (click)="logout()">Logout</button>
+            <a routerLink="/update">Atualizar</a>
+            <a routerLink="/profile">Ver Perfil</a>
+            <a routerLink="/cientists">Cientistas</a>
+            <button class="logout btn btn-info" (click)="logout()">Sair</button>
         </div>
         <div *ngIf="!authService.isAuthenticated()">
-            <a routerLink="/login" class="btn btn-info">Login</a>
-            <a routerLink="/register" class="btn btn-light">Register</a>
+            <a routerLink="/login">Entrar</a>
+            <a routerLink="/register">Cadastro</a>
         </div>
     </div>
 </div>
