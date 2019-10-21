@@ -8,8 +8,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { UpdateComponent } from './update/update.component';
 import { ListCientistsComponent } from './list-cientists/list-cientists.component';
 import { DetailsComponent } from './details/details.component';
-import { UpdatePremiumComponent } from './update-premium/update-premium.component';
-import { GlossaryComponent } from './glossary/glossary.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
 import { AuthGuard } from './auth.guard';
 
@@ -23,9 +21,7 @@ const routes: Routes = [
   {path: 'update', component: UpdateComponent,canActivate: [AuthGuard]},
   {path: 'details', component: DetailsComponent,canActivate: [AuthGuard]},
   {path: 'cientists', component: ListCientistsComponent,canActivate: [AuthGuard]},
-  {path: 'premium', component: UpdatePremiumComponent,canActivate: [AuthGuard]},
   {path: 'members-recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
-  {path: 'glossary', component: GlossaryComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({
