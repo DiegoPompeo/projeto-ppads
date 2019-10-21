@@ -1,0 +1,20 @@
+<div class="container mt-3" *ngIf="pessoa">
+    <div class="card card-light">
+        <div class="card-header ">
+            <td scope="row">
+                <div><h2>{{pessoa.nome}}</h2></div>
+            </td>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div>
+                    <p>Email:  {{pessoa.email}} </p>
+                    <p>Empresa: {{pessoa.empresa}}</p>
+                </div>
+            </div>
+            <button (click)="gotoList()" class="btn btn-dark btn-lg">
+                Voltar a lista
+            </button>
+        </div>
+    </div>
+</div>

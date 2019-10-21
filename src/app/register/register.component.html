@@ -1,0 +1,59 @@
+<div class="container justify-content-center">
+    <div *ngIf="msgSuccess">
+        <app-register-success></app-register-success>
+    </div>
+    <h4>Conta paga?</h4>
+    <div class="btn-group mb-3" role="group">
+        <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
+        <button (click)="hideContaPaga()" class="btn btn-danger">Não</button>
+    </div>
+    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
+        <div class="form-group">
+            <label for="inputUsername" class="sr-only">Nome</label>
+            <input type="text" id="inputUsername" formControlName="nome" class="form-control"
+                placeholder="Nome Completo" required="true" autofocus="">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="sr-only">Email</label>
+            <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email"
+                required="true" autofocus="">
+        </div>
+        <div class="alert alert-danger" *ngIf="msgError">
+            Email já cadastrado.
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">Senha</label>
+            <input type="password" id="inputPassword" formControlName="senha" class="form-control" placeholder="Senha"
+                required="true">
+        </div>
+        <div class="form-group">
+            <label for="inputCompany" class="sr-only">Empresa</label>
+            <input type="text" id="inputCompany" formControlName="empresa" class="form-control" placeholder="Empresa"
+                required="true">
+        </div>
+        <div *ngIf="submitted">
+            <div class="form-group">
+                <label for="inputNCard" class="sr-only">Numero do cartão</label>
+                <input type="text" id="inputNCard" formControlName="nroCartao" class="form-control"
+                    placeholder="Numero do cartão" required="{{submitted}}">
+            </div>
+            <div class="form-group">
+                <label for="input" class="sr-only">Nome no cartão</label>
+                <input type="text" id="input" formControlName="nomeNoCartao" class="form-control"
+                    placeholder="Nome no cartão" required="{{submitted}}">
+            </div>
+            <div class="form-group">
+                <label for="inputDateVal" class="sr-only">Data validade</label>
+                <input type="text" id="inputDateVal" formControlName="dataValidade" class="form-control"
+                    placeholder="Data validade" required="{{submitted}}">
+            </div>
+            <div class="form-group">
+                <label for="inputCodSec" class="sr-only">Codigo segurança</label>
+                <input type="text" id="inputCodSec" formControlName="codSeg" class="form-control"
+                    placeholder="Código segurança" required="{{submitted}}">
+            </div>
+        </div>
+        <button class="btn btn-lg btn-primary" type="submit">Cadastrar</button>
+    </form>
+</div>
