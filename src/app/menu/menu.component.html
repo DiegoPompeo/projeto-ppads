@@ -4,7 +4,7 @@
             <a routerLink="/update" class="mr-3">Atualizar</a>
             <a routerLink="/profile" class="mr-3">Ver Perfil</a>
             <a routerLink="/cientists" >Cientistas</a>
-            <button class="logout btn btn-info" (click)="logout()">Sair</button>
+            <button class="logout btn btn-dark" (click)="logout()">Sair</button>
         </div>
         <div *ngIf="!authService.isAuthenticated()">
             <a routerLink="/login" class="mr-3">Entrar</a>
