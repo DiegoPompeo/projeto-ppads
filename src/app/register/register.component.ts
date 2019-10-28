@@ -80,15 +80,25 @@ export class RegisterComponent implements OnInit {
           this.pessoa.nome = this.registerForm.get('nome').value;
           this.pessoa.email = this.registerForm.get('email').value;
           this.pessoa.senha = this.registerForm.get('senha').value;
+          this.pessoa.empresa = this.registerForm.get('empresa').value;
+
           this.pessoa.nroCartao = this.registerForm.get('nroCartao').value;
           this.pessoa.nomeNoCartao = this.registerForm.get('nomeNoCartao').value;
           this.pessoa.dataValidade = this.registerForm.get('dataValidade').value;
           this.pessoa.codSeg = this.registerForm.get('codSeg').value;
-          this.pessoa.empresa = this.registerForm.get('empresa').value;
+          
+          this.pessoa.inicioDaAtividade = this.registerForm.get('inicioDaAtividade').value;
+          this.pessoa.dataNascimento = this.registerForm.get('dataNascimento').value;
+          this.pessoa.nivelEscolaridade = this.registerForm.get('nivelEscolaridade').value;
+          this.pessoa.cidade = this.registerForm.get('cidade').value;
+          this.pessoa.estado = this.registerForm.get('estado').value;
+          this.pessoa.salario = this.registerForm.get('salario').value;
+
           this.pessoa.paga = this.submitted;
+
+          localStorage.setItem("email",this.pessoa.email);
     
-          this.authService.register(this.pessoa).subscribe(data => {
-            console.log('register success');            
+          this.authService.register(this.pessoa).subscribe(data => { 
           });
           this.msgSuccess = true;
         } else {
