@@ -2,11 +2,11 @@
     <div class="row">
         <div *ngIf="authService.isAuthenticated()">
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar">
+                <input class="form-control mr-2" type="text" placeholder="Pesquisar">
                 <button class="btn btn-info" type="submit">Pesquisar</button><a routerLink="/update"
                     class="mr-3">Atualizar</a>
                 <a routerLink="/profile" class="mr-3">Pagina inicial</a>
-                <a routerLink="/cientists">Cientistas</a>                
+                <a routerLink="/cientists" class="mr-3">Cientistas</a>                
                 <button class="btn btn-info" (click)="logout()">Sair</button>
             </form>            
         </div>

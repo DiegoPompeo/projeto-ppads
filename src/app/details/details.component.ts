@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit {
 
   Detalhe(){
     let id = localStorage.getItem("det_id");
-    this.service.verPerfil(+id).subscribe(
+    this.service.getCientist(id).subscribe(
       data => {
         this.pessoa = data;
       }
