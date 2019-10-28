@@ -3,12 +3,22 @@ export class Pessoa {
     nome: string;
     email: string;
     senha: string;
+    empresa: string;
+    inicioDaAtividade: string;
+    dataNascimento: string;
+    nivelEscolaridade: string;
+    cidade: string;
+    estado: string;
+    salario: string;
+
     nroCartao: string;
     nomeNoCartao: string;
     dataValidade: string;
-    codSeg: string;
-    empresa: string;
+    codSeg: string;    
+
     paga: boolean;
+    curtidas: number;
+    qualidades: string;
 }
 
 export class PessoaLogin{
