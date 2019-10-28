@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-    url = 'https://redecientista.herokuapp.com';
+    url = 'https://server-redesocial.herokuapp.com/redesocial';
 
     constructor(private httpClient: HttpClient, private router: Router) { }
 

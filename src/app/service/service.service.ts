@@ -7,7 +7,7 @@ import { Pessoa } from '../model/pessoa';
 })
 export class ServiceService {
 
-  url = 'https://redecientista.herokuapp.com'
+  url = 'https://server-redesocial.herokuapp.com/redesocial/'
 
   constructor(private http: HttpClient) { }
 
