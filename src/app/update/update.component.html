@@ -2,11 +2,6 @@
         <div *ngIf="msgSuccess">
             <app-register-success></app-register-success>
         </div>
-        <h4 class="text-light">Deseja tornar conta premium?</h4>
-        <div class="btn-group mb-3" role="group">
-            <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
-            <button (click)="hideContaPaga()" class="btn btn-danger">Não</button>
-        </div>
         <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
             <h1 class="h3 mb-3 font-weight-normal">Atualizar dados</h1>
             <div class="form-group">
@@ -30,6 +25,31 @@
             <div class="form-group">
                 <label for="inputCompany" class="sr-only">Empresa</label>
                 <input type="text" id="inputCompany" formControlName="empresa" class="form-control" placeholder="Empresa"
+                    required="true">
+            </div>        
+            <h4 class="text-light">Deseja tornar conta premium?</h4>
+            <div class="btn-group mb-3" role="group">
+                <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
+                <button (click)="hideContaPaga()" class="btn btn-danger">Não</button>
+            </div>
+            <div class="form-group">
+                <label for="inputCidade" class="sr-only">Cidade</label>
+                <input type="text" id="inputCidade" formControlName="cidade" class="form-control" placeholder="Cidade"
+                    required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputEstado" class="sr-only">Estado</label>
+                <input type="text" id="inputEstado" formControlName="estado" class="form-control" placeholder="Estado"
+                    required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputAtiv" class="sr-only">Anos que trabalha como cientista</label>
+                <input type="text" id="inputAtiv" formControlName="inicioDaAtividade" class="form-control" placeholder="Anos que trabalha como cientista"
+                    required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputnivelEscolaridade" class="sr-only">Nivel escolaridade</label>
+                <input type="text" id="inputnivelEscolaridade" formControlName="nivelEscolaridade" class="form-control" placeholder="Nivel de instrução"
                     required="true">
             </div>
             <div *ngIf="submitted">

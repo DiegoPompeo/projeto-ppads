@@ -22,27 +22,42 @@ export class UpdateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) {
-    this.registerForm = this.formBuilder.group({
-      nome: '',
-      email: '',
-      senha: '',
-      nroCartao: '',
-      nomeNoCartao: '',
-      dataValidade: '',
-      codSeg: '',
-      empresa: ''
-    });
-    this.pessoa = {
-      id: +localStorage.getItem("id"),
-      nome: '',
-      email: '',
-      senha: '',
-      nroCartao: '',
-      nomeNoCartao: '',
-      dataValidade: '',
-      codSeg: '',
-      empresa: '',
-      paga: null
+      this.registerForm = this.formBuilder.group({
+        nome: '',
+        email: '',
+        senha: '',
+        nroCartao: '',
+        nomeNoCartao: '',
+        dataValidade: '',
+        codSeg: '',
+        empresa: '',
+        inicioDaAtividade: '',
+        dataNascimento:  '',
+        nivelEscolaridade:  '',
+        cidade:  '',
+        estado:  '',
+        salario:  '',
+        qualidades: '',
+      });
+      this.pessoa = {
+        id: null,
+        nome: '',
+        email: '',
+        senha: '',
+        nroCartao: '',
+        nomeNoCartao: '',
+        dataValidade: '',
+        codSeg: '',
+        empresa: '',
+        inicioDaAtividade: '',
+        dataNascimento:  '',
+        nivelEscolaridade:  '',
+        cidade:  '',
+        estado:  '',
+        salario:  '',
+        qualidades: '',
+        curtidas: 0,
+        paga: null
     }
   }
 
