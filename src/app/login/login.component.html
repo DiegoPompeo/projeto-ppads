@@ -1,9 +1,12 @@
-<div class="container">
+<div class="container" style="widows: 50%;">
     <div class="alert alert-danger mt-3 mb-3" *ngIf="msgError">
         Usuário ou senha digitados inválidos. Caso ainda não seja cadastrado, <a routerLink="/register">clique aqui</a>.
     </div>
     <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
         <h3 class="mb-3 font-weight-normal">Login</h3>
+        <p class=" text-center">
+            <i style="font-size: 200px;" class="large material-icons">account_circle</i>
+        </p>
         <div class="form-group">
             <label for="inputEmail" class="sr-only">Email</label>
             <input type="email" id="inputEmail" formControlName="email" class="form-control"
@@ -14,6 +17,7 @@
             <input type="password" id="" formControlName="senha" class="form-control"
                 placeholder="Senha" required="">
         </div>
-        <button class="btn btn-lg btn-primary" type="submit">Entrar</button>
+        <button class="btn btn-lg btn-primary" type="submit">Login</button>
+        <a href="#">Esqueceu a senha ou email?</a>
     </form>
 </div>
