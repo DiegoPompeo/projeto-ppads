@@ -6,9 +6,9 @@
                 <button class="btn btn-info" type="submit">Pesquisar</button><a routerLink="/update"
                     class="mr-3">Atualizar</a>
                 <a routerLink="/profile" class="mr-3">Pagina inicial</a>
-                <a routerLink="/cientists">Cientistas</a>
-            </form>
-            <button class="btn btn-info" (click)="logout()">Sair</button>
+                <a routerLink="/cientists">Cientistas</a>                
+                <button class="btn btn-info" (click)="logout()">Sair</button>
+            </form>            
         </div>
         <div *ngIf="!authService.isAuthenticated()">
             <a routerLink="/login" class="mr-3">Entrar</a>

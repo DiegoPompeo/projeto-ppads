@@ -42,8 +42,8 @@ export class UpdateComponent implements OnInit {
   }
 
   edit() {
-    let id = localStorage.getItem("id");
-    this.service.verPerfil(+id).subscribe(
+    let email = localStorage.getItem("email");
+    this.service.getCientist(email).subscribe(
       data => {
         this.pessoa = data;
       }
