@@ -30,7 +30,14 @@ export class RegisterComponent implements OnInit {
       nomeNoCartao: '',
       dataValidade: '',
       codSeg: '',
-      empresa: ''
+      empresa: '',
+      inicioDaAtividade: '',
+      dataNascimento:  '',
+      nivelEscolaridade:  '',
+      cidade:  '',
+      estado:  '',
+      salario:  '',
+      qualidades: '',
     });
     this.pessoa = {
       id: null,
@@ -42,6 +49,14 @@ export class RegisterComponent implements OnInit {
       dataValidade: '',
       codSeg: '',
       empresa: '',
+      inicioDaAtividade: '',
+      dataNascimento:  '',
+      nivelEscolaridade:  '',
+      cidade:  '',
+      estado:  '',
+      salario:  '',
+      qualidades: '',
+      curtidas: 0,
       paga: null
     }
   }
