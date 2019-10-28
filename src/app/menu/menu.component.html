@@ -1,18 +1,19 @@
 <div class="container-fluid">
     <div class="row">
-        <div *ngIf="authService.isAuthenticated()">
-            <form class="form-inline">
-                <input class="form-control mr-2" type="text" placeholder="Pesquisar">
-                <button class="btn btn-info" type="submit">Pesquisar</button><a routerLink="/update"
-                    class="mr-3">Atualizar</a>
-                <a routerLink="/profile" class="mr-3">Pagina inicial</a>
-                <a routerLink="/cientists" class="mr-3">Cientistas</a>                
-                <button class="btn btn-info" (click)="logout()">Sair</button>
-            </form>            
+        <div *ngIf="authService.isAuthenticated()" class="col-md-8">
+            <h3>RedeSocial</h3>
         </div>
-        <div *ngIf="!authService.isAuthenticated()">
-            <a routerLink="/login" class="mr-3">Entrar</a>
-            <a routerLink="/register">Cadastro</a>
+        <div *ngIf="!authService.isAuthenticated()" class="col-md-10">
+            <h3>RedeSocial</h3>
+        </div>
+        <div *ngIf="authService.isAuthenticated()" class="col-md-4">
+            <a href="/profile" class="btn btn-default">Ver Perfil</a>
+            <a href="/cientists" class="btn btn-default">Lista de Cientistas</a>
+            <button class="logout btn btn-default" (click)="logout()">Logout</button>
+        </div>
+        <div *ngIf="!authService.isAuthenticated()" class="col-md-2">
+            <a href="/login" class="btn btn-default">Login</a>
+            <a href="/register" class="btn btn-default">Register</a>
         </div>
     </div>
 </div>
