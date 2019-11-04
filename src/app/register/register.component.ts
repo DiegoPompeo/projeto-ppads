@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       cidade:  '',
       estado:  '',
       salario:  '',
-      qualidades: '',
+      interesse: '',
     });
     this.pessoa = {
       id: null,
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
       cidade:  '',
       estado:  '',
       salario:  '',
-      qualidades: '',
+      interesse: '',
       curtidas: 0,
       paga: null
     }
