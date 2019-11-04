@@ -1,8 +1,10 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-    <h3>Post</h3>
-    <div class="row container mb-3">
-        <textarea type="text" placeholder="O que você está pensando?" class="form-control" formControlName="conteudo"
-            required="true"></textarea>
-    </div>
-    <button class="btn btn-primary" type="submit">Postar</button>
-</form>
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <h3>Post</h3>
+        <div class="row container mb-3">
+            <textarea type="text" placeholder="O que você está pensando?" class="form-control"
+                formControlName="conteudo" required="true"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Postar</button>
+    </form>
+</div>

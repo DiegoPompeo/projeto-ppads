@@ -1,8 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8"  *ngIf="authService.isAuthenticated()" >
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar">
+            <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                <input class="form-control mr-sm-2" type="text" 
+                formControlName="nome"
+                placeholder="Pesquisar pelo nome">
                 <button class="btn btn-light" type="submit">Pesquisar</button>
             </form>
         </div>

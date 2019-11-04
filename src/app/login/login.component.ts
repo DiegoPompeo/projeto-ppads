@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
         if (data) {
           this.router.navigateByUrl("profile");
         } else {
-          console.log(this.pessoaLogin);
           this.msgError = true;
         }
       }

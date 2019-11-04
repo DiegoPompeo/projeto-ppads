@@ -1,27 +1,29 @@
 <div class="container-fluid mt-3" *ngIf="cientist">
-    <div class="col-md-6">
-        <p class="mb-3 text">Olá, <b>{{cientist.nome}}</b></p>
-        <span>
-            <i style="font-size: 200px;" class="large material-icons">account_circle</i>
-        </span>
-        <p class="mb-3 text"><b>{{cientist.email}}</b></p>
-        <p class="mb-3 text"><b>{{cientist.empresa}}</b></p>
-        <p class="mb-3 text"><b>{{cientist.cidade}}</b></p>
-        <p class="mb-3 text"><b>{{cientist.estado}}</b></p>
-        <p class="mb-3 text"><b>{{cientist.nivelEscolaridade}}</b></p>
-        <p class="mb-3 text"><b>{{cientist.dataNascimento}}</b></p>
-        <p class="mb-3 text"><b>{{cientist.inicioDaAtividade}}</b></p>
-        <button class="btn btn-block btn-info" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
-    </div>
-    <div class="col-md-6">
-        <h3>Posts</h3>
-        <div *ngIf="posts">
-            <div *ngFor="let post of posts">
-                <div class="card mt-3 mb-3">
-                    <div class="card-body">
-                        <p class="card-text">{{post.conteudo}}</p>
-                        <div>
-                            <button class="btn btn-primary">Like</button>
+    <div class="row">
+        <div class="col-md-3">
+            <p class="mb-3 text">Olá, <b>{{cientist.nome}}</b></p>
+            <span>
+                <i style="font-size: 200px;" class="large material-icons">account_circle</i>
+            </span>
+            <p class="mb-3 text"><b>{{cientist.email}}</b></p>
+            <p class="mb-3 text"><b>{{cientist.empresa}}</b></p>
+            <p class="mb-3 text"><b>{{cientist.cidade}}</b></p>
+            <p class="mb-3 text"><b>{{cientist.estado}}</b></p>
+            <p class="mb-3 text"><b>{{cientist.nivelEscolaridade}}</b></p>
+            <p class="mb-3 text"><b>{{cientist.dataNascimento}}</b></p>
+            <p class="mb-3 text"><b>{{cientist.inicioDaAtividade}}</b></p>
+            <button class="btn btn-block btn-info" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
+        </div>
+        <div class="col-md-9">
+            <h3>Posts</h3>
+            <div *ngIf="posts">
+                <div *ngFor="let post of posts">
+                    <div class="card mt-3 mb-3">
+                        <div class="card-body">
+                            <p class="card-text">{{post.conteudo}}</p>
+                            <div>
+                                <button class="btn btn-primary">Like</button>
+                            </div>
                         </div>
                     </div>
                 </div>

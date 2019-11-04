@@ -17,25 +17,21 @@ export class MembersRecommendedComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.service.listar()
+    this.getPessoas();
+  }
+
+  getPessoas(){
+    this.service
+    .findByName(localStorage.getItem("nome_pesquisa"))
     .subscribe(
       data => {
         this.cientists = data;
       }
     );
-    this.getPessoa();  
   }
-
-  getPessoa(){
-    this.service.getCientist(localStorage.getItem("email"))
-      .subscribe(data => {
-        this.pessoa = data;
-      });
-  }
-
 
   gotoDetails(cientist: Pessoa){
-    localStorage.setItem("det_id", cientist.id.toString());
-    this.router.navigate(['/details']);
+    localStorage.setItem("det_id", cientist.email);
+    this.router.navigate(['details']);
   }
 }
