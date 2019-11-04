@@ -10,6 +10,7 @@ import { ListCientistsComponent } from './list-cientists/list-cientists.componen
 import { DetailsComponent } from './details/details.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
 import { AuthGuard } from './auth.guard';
+import { PostComponent } from './post/post.component';
 
 // canActivate: [AuthGuard]
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'update', component: UpdateComponent,canActivate: [AuthGuard]},
   {path: 'details', component: DetailsComponent,canActivate: [AuthGuard]},
   {path: 'cientists', component: ListCientistsComponent,canActivate: [AuthGuard]},
+  {path: 'post', component: PostComponent,canActivate: [AuthGuard]},
   {path: 'members-recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
 ];
 

@@ -25,3 +25,10 @@ export class PessoaLogin{
     email: string;
     senha: string;
 }
+
+export class Post{
+    id: number;
+    conteudo: string;
+    email: string;
+    curtidas: number;
+}

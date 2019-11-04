@@ -1,19 +1,20 @@
 <div class="container-fluid">
     <div class="row">
-        <div *ngIf="authService.isAuthenticated()" class="col-md-8">
-            <h3>RedeSocial</h3>
-        </div>
-        <div *ngIf="!authService.isAuthenticated()" class="col-md-10">
-            <h3>RedeSocial</h3>
+        <div class="col-md-8">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar">
+                <button class="btn btn-light" type="submit">Pesquisar</button>
+            </form>
         </div>
         <div *ngIf="authService.isAuthenticated()" class="col-md-4">
-            <a href="/profile" class="btn btn-default">Ver Perfil</a>
-            <a href="/cientists" class="btn btn-default">Lista de Cientistas</a>
+            <a routerLink="/profile" class="btn btn-default">Ver Perfil</a>
+            <a routerLink="/cientists" class="btn btn-default">Lista de Cientistas</a>
+            <a routerLink="/post" class="btn btn-default">Postar</a>
             <button class="logout btn btn-default" (click)="logout()">Logout</button>
         </div>
         <div *ngIf="!authService.isAuthenticated()" class="col-md-2">
-            <a href="/login" class="btn btn-default">Login</a>
-            <a href="/register" class="btn btn-default">Register</a>
+            <a routerLink="/login" class="btn btn-default">Login</a>
+            <a routerLink="/register" class="btn btn-default">Register</a>
         </div>
     </div>
 </div>

@@ -16,6 +16,7 @@ import { UpdateComponent } from './update/update.component';
 import { DetailsComponent } from './details/details.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MembersRecommendedComponent } from './members-recommended/members-recom
     UpdateComponent,
     DetailsComponent,
     GlossaryComponent,
-    MembersRecommendedComponent
+    MembersRecommendedComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

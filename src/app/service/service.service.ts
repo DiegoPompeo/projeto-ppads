@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa } from '../model/pessoa';
+import { Pessoa, Post } from '../model/pessoa';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +11,33 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
 
-  //Read
-  listar() {
-    return this.http.get<Pessoa[]>(this.url);
-  }
+//Read
+listar() {
+  return this.http.get<Pessoa[]>(this.url);
+}
 
-  //ReadById
-  verPerfil(id: number) {
-    return this.http.get<Pessoa>(this.url + "/perfil/" + id);
-  }
+//ReadById
+verPerfil(id: number) {
+  return this.http.get<Pessoa>(this.url + "/" + id);
+}
 
-  //Update
-  atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.id, pessoa);
-  }
+//Update
+atualizarPerfil(pessoa: Pessoa) {
+  return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.email, pessoa);
+}
 
-  //ReadByEmail
-  getCientist(email: string){
-    return this.http.get<Pessoa>(this.url + "/buscar/" + email);
-  }
+//ReadByEmail
+getCientist(email: string){
+  return this.http.get<Pessoa>(this.url + "/buscar/" + email);
+}
+
+//AddPost
+addPost(post: Post){
+  return this.http.post<Post>(this.url + "/addPost", post);
+}
+
+//ReadPostByEmail
+verPost(email: string){
+  return this.http.get<Post[]>(this.url+ "/verPost/" + email);
+}
 }
