@@ -12,6 +12,7 @@ import { MembersRecommendedComponent } from './members-recommended/members-recom
 import { AuthGuard } from './auth.guard';
 import { PostComponent } from './post/post.component';
 import { GlossaryComponent } from './glossary/glossary.component';
+import { SearchComponent } from './search/search.component';
 
 // canActivate: [AuthGuard]
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'register-success', component: RegisterSuccessComponent},
   {path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
+  {path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
   {path: 'update', component: UpdateComponent,canActivate: [AuthGuard]},
   {path: 'details', component: DetailsComponent,canActivate: [AuthGuard]},
   {path: 'cientists', component: ListCientistsComponent,canActivate: [AuthGuard]},

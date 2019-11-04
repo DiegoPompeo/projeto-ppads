@@ -1,0 +1,7 @@
+<div class="container">
+    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <input class="form-control" type="text" formControlName="nome" placeholder="Pesquisar pelo nome">
+        <button routerLink="/recommended" class="btn btn-light" type="submit">Pesquisar</button>
+    </form>
+    <app-list-cientists></app-list-cientists>
+</div>

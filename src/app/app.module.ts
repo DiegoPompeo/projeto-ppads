@@ -18,6 +18,8 @@ import { GlossaryComponent } from './glossary/glossary.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
 import { PostComponent } from './post/post.component';
 import { GlossarySuccessComponent } from './glossary-success/glossary-success.component';
+import { SearchComponent } from './search/search.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { GlossarySuccessComponent } from './glossary-success/glossary-success.co
     GlossaryComponent,
     MembersRecommendedComponent,
     PostComponent,
-    GlossarySuccessComponent
+    GlossarySuccessComponent,
+    SearchComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

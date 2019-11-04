@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Pessoa, PessoaNome } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 
@@ -12,32 +10,15 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  searchForm: FormGroup;
-  pessoaNome: PessoaNome;
-
   constructor(
-    public formBuilder: FormBuilder,
     public authService: AuthService,
     public service: ServiceService,
     public router: Router) {
-    this.searchForm = this.formBuilder.group({
-      nome: ''
-    });
-    this.pessoaNome = {
-      nome: ''
-    }
   }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.pessoaNome.nome = this.searchForm.get('nome').value;
-    localStorage.setItem("nome_pesquisa", this.pessoaNome.nome);
-    this.router.navigateByUrl('/recommended', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['recommended']);
-    });
-  }
 
   logout() {
     this.authService.logout();
