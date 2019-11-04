@@ -35,6 +35,7 @@ export class MenuComponent implements OnInit {
     this.pessoaNome.nome = this.searchForm.get('nome').value;
     localStorage.setItem("nome_pesquisa", this.pessoaNome.nome);
     this.searchForm.setValue({nome: ''});
+    this.ngOnInit();
   }
 
   logout() {
