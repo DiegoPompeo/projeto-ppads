@@ -13,15 +13,17 @@ export class MembersRecommendedComponent implements OnInit {
   pessoa: Pessoa;
   cientist: Pessoa;
   cientists: Pessoa[];
+  resultado: string;
 
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
     this.getPessoas();
+    this.resultado = localStorage.getItem("nome_pesquisa");
   }
 
   getPessoas(){    
-    let nome = localStorage.getItem("nome_pesquisa");
+    let nome = localStorage.getItem("nome_pesquisa");    
     this.service
     .findByName(nome)
     .subscribe(

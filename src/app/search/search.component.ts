@@ -32,8 +32,8 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
-    this.pessoaNome.nome = this.searchForm.get('nome').value;
-    localStorage.setItem("nome_pesquisa", this.pessoaNome.nome);
+    let nome = this.searchForm.get('nome').value;
+    localStorage.setItem("nome_pesquisa", nome);
   }
 
 }
