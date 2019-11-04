@@ -19,7 +19,6 @@ import { MembersRecommendedComponent } from './members-recommended/members-recom
 import { PostComponent } from './post/post.component';
 import { GlossarySuccessComponent } from './glossary-success/glossary-success.component';
 import { SearchComponent } from './search/search.component';
-import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MembersRecommendedComponent,
     PostComponent,
     GlossarySuccessComponent,
-    SearchComponent,
-    SearchResultComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,
