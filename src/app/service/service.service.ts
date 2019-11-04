@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa, Post } from '../model/pessoa';
+import { Pessoa, Post, Glossario } from '../model/pessoa';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +44,10 @@ export class ServiceService {
   //ReadPostByEmail
   verPost(email: string) {
     return this.http.get<Post[]>(this.url + "/verPost/" + email);
+  }
+
+  //ListGlossary
+  listaGlossary(){
+    return this.http.get<Glossario[]>("https://server-redesocial.herokuapp.com/redesocial/glossario");
   }
 }

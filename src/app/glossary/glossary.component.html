@@ -1,1 +1,15 @@
-<p>glossary works!</p>
+<div class="container" *ngIf="submitted">
+    <app-glossary-success [selecionados]="selecionados"></app-glossary-success>
+</div>
+<div *ngIf="!submitted">
+    <div class="col-md-6">
+        <label for="" *ngFor="let g of glossarios" class="row">
+            <div>
+                <input type="checkbox" name="{{g}}" id="{{g}}"
+                    (change)="onChangeCategory($event.target.checked, g)">{{g}}
+            </div>
+        </label>
+    </div>
+    <button class="ml-3 mb-3 btn btn-info" (click)="submit(pessoa)">
+        Confirmar</button>
+</div>

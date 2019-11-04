@@ -8,8 +8,9 @@
                 <button routerLink="/recommended" class="btn btn-light" type="submit">Pesquisar</button>
             </form>
         </div>
-        <div *ngIf="authService.isAuthenticated()" class="col-md-4">
+        <div *ngIf="authService.isAuthenticated()" class="col-md-6">
             <a routerLink="/profile" class="btn btn-default">Ver Perfil</a>
+            <a routerLink="/interest" class="btn btn-default">Interesses</a>
             <a routerLink="/cientists" class="btn btn-default">Lista de Cientistas</a>
             <a routerLink="/post" class="btn btn-default">Postar</a>
             <button class="logout btn btn-default" (click)="logout()">Logout</button>

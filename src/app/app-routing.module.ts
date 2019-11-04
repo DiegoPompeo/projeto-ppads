@@ -11,6 +11,7 @@ import { DetailsComponent } from './details/details.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
 import { AuthGuard } from './auth.guard';
 import { PostComponent } from './post/post.component';
+import { GlossaryComponent } from './glossary/glossary.component';
 
 // canActivate: [AuthGuard]
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'details', component: DetailsComponent,canActivate: [AuthGuard]},
   {path: 'cientists', component: ListCientistsComponent,canActivate: [AuthGuard]},
   {path: 'post', component: PostComponent,canActivate: [AuthGuard]},
+  {path: 'interest', component: GlossaryComponent,canActivate: [AuthGuard]},
   {path: 'recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
 ];
 

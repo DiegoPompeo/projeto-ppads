@@ -18,7 +18,7 @@ export class Pessoa {
 
     paga: boolean;
     curtidas: number;
-    qualidades: string;
+    interesse: string;
 }
 
 export class PessoaNome{
@@ -35,4 +35,9 @@ export class Post{
     conteudo: string;
     email: string;
     curtidas: number;
+}
+
+export class Glossario{
+    id: number;
+    nome: string;
 }
