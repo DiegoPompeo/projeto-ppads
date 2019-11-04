@@ -10,6 +10,7 @@ import { ServiceService } from '../service/service.service';
 })
 export class UpdateComponent implements OnInit {
 
+  submitted = false;
   pessoa: Pessoa;
 
   constructor(private service: ServiceService, 
@@ -30,6 +31,14 @@ export class UpdateComponent implements OnInit {
         this.pessoa = data;
       }
     );
+  }
+
+  showContaPaga(){
+    this.submitted = true;
+  }
+
+  hideContaPaga(){
+    this.submitted = false;
   }
 
   Atualizar(pessoa: Pessoa){

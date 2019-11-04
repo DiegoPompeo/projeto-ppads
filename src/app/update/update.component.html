@@ -1,56 +1,85 @@
-<div class="container justify-content-center">
+<div class="container justify-content-center mb-3">
+    <h4>Deseja tornar conta premium?</h4>
+    <div class="btn-group mb-3" role="group">
+        <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
+        <button (click)="hideContaPaga()" class="btn btn-danger">Não</button>
+    </div>
     <form ngNativeValidate>
         <h1 class="h3 mb-3 font-weight-normal">Atualizar dados</h1>
         <div class="form-group row">
-            <label for="nome" class="col-md-4 col-form-label">Nome Completo</label>
+            <label for="nome">Nome Completo</label>
             <input id="nome" type="text" [(ngModel)]="pessoa.nome" class="form-control" name="nome" required="true">
         </div>
 
         <div class="form-group row">
-            <label for="email" class="col-md-4 col-form-label">Email</label>
+            <label for="email">Email</label>
             <input id="email" type="email" [(ngModel)]="pessoa.email" class="form-control" name="email" required="true">
         </div>
 
         <div class="form-group row">
-            <label for="empresa" class="col-md-4 col-form-label">Empresa</label>
+            <label for="empresa">Empresa</label>
             <input id="empresa" type="text" [(ngModel)]="pessoa.empresa" class="form-control" name="empresa"
                 required="true">
         </div>
 
         <div class="form-group row">
-            <label for="senha" class="col-md-4 col-form-label">Senha</label>
+            <label for="senha">Senha</label>
             <input id="senha" type="password" [(ngModel)]="pessoa.senha" class="form-control" name="senha"
                 required="true">
         </div>
 
         <div class="form-group row">
-            <label for="inicioDaAtividade" class="col-md-4 col-form-label">Inicio da atividade</label>
-            <input id="inicioDaAtividade" type="text" [(ngModel)]="pessoa.inicioDaAtividade" class="form-control" name="inicioDaAtividade"
-                required="true">
+            <label for="inicioDaAtividade">Inicio da atividade</label>
+            <input id="inicioDaAtividade" type="text" [(ngModel)]="pessoa.inicioDaAtividade" class="form-control"
+                name="inicioDaAtividade" required="true">
         </div>
 
         <div class="form-group row">
-            <label for="dataNascimento" class="col-md-4 col-form-label">Data de Nascimento</label>
-            <input id="dataNascimento" type="text" [(ngModel)]="pessoa.dataNascimento" class="form-control" name="dataNascimento"
-                required="true">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input id="dataNascimento" type="text" [(ngModel)]="pessoa.dataNascimento" class="form-control"
+                name="dataNascimento" required="true">
         </div>
 
         <div class="form-group row">
-            <label for="nivelEscolaridade" class="col-md-4 col-form-label">Nivel de escolaridade</label>
-            <input id="nivelEscolaridade" type="text" [(ngModel)]="pessoa.nivelEscolaridade" class="form-control" name="nivelEscolaridade"
-                required="true">
+            <label for="nivelEscolaridade">Nivel de escolaridade</label>
+            <input id="nivelEscolaridade" type="text" [(ngModel)]="pessoa.nivelEscolaridade" class="form-control"
+                name="nivelEscolaridade" required="true">
         </div>
 
         <div class="form-group row">
-            <label for="cidade" class="col-md-4 col-form-label">Cidade</label>
+            <label for="cidade">Cidade</label>
             <input id="cidade" type="text" [(ngModel)]="pessoa.cidade" class="form-control" name="cidade"
                 required="true">
         </div>
 
         <div class="form-group row">
-            <label for="estado" class="col-md-4 col-form-label">Estado</label>
+            <label for="estado">Estado</label>
             <input id="estado" type="text" [(ngModel)]="pessoa.estado" class="form-control" name="estado"
                 required="true">
+        </div>
+
+        <div *ngIf="submitted">
+            <div class="form-group">
+                <label for="inputNCard" >Numero do cartão</label>
+                <input type="text" id="inputNCard"
+                [(ngModel)]="pessoa.nroCartao" class="form-control" name="nroCartao"
+                 required="{{submitted}}">
+            </div>
+            <div class="form-group">
+                <label for="input" class="sr-only">Nome no cartão</label>
+                <input type="text" id="input" 
+                [(ngModel)]="pessoa.nomeNoCartao" class="form-control" name="nomeNoCartao" required="{{submitted}}">
+            </div>
+            <div class="form-group">
+                <label for="inputDateVal" class="sr-only">Data validade</label>
+                <input type="text" id="inputDateVal" [(ngModel)]="pessoa.dataValidade" class="form-control" 
+                name="dataValidade" required="{{submitted}}">
+            </div>
+            <div class="form-group">
+                <label for="inputCodSec" class="sr-only">Codigo segurança</label>
+                <input type="text" id="inputCodSec" [(ngModel)]="pessoa.codSeg" class="form-control" name="codSeg"
+                 required="{{submitted}}">
+            </div>
         </div>
 
         <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">

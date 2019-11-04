@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8"  *ngIf="authService.isAuthenticated()" >
+        <div class="col-md-4"  *ngIf="authService.isAuthenticated()" >
             <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
                 <input class="form-control mr-sm-2" type="text" 
                 formControlName="nome"
@@ -8,14 +8,14 @@
                 <button routerLink="/recommended" class="btn btn-light" type="submit">Pesquisar</button>
             </form>
         </div>
-        <div *ngIf="authService.isAuthenticated()" class="col-md-6">
+        <div *ngIf="authService.isAuthenticated()" class="col-md-8">
             <a routerLink="/profile" class="btn btn-default">Ver Perfil</a>
             <a routerLink="/interest" class="btn btn-default">Interesses</a>
             <a routerLink="/cientists" class="btn btn-default">Lista de Cientistas</a>
             <a routerLink="/post" class="btn btn-default">Postar</a>
             <button class="logout btn btn-default" (click)="logout()">Logout</button>
         </div>
-        <div *ngIf="!authService.isAuthenticated()" class="col-md-2">
+        <div *ngIf="!authService.isAuthenticated()">
             <a routerLink="/login" class="btn btn-default">Login</a>
             <a routerLink="/register" class="btn btn-default">Register</a>
         </div>
