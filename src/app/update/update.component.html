@@ -18,12 +18,42 @@
         </div>
 
         <div class="form-group">
-            <label for="senha" class="sr-only">Senha:</label>
+            <label for="senha" class="sr-only">Senha</label>
             <input id="senha" type="password" [(ngModel)]="pessoa.senha" class="form-control" name="senha"
                 required="true">
         </div>
-        
+
+        <div class="form-group">
+            <label for="inicioDaAtividade" class="sr-only">Inicio da atividade</label>
+            <input id="inicioDaAtividade" type="text" [(ngModel)]="pessoa.inicioDaAtividade" class="form-control" name="inicioDaAtividade"
+                required="true">
+        </div>
+
+        <div class="form-group">
+            <label for="dataNascimento" class="sr-only">Data de Nascimento</label>
+            <input id="dataNascimento" type="text" [(ngModel)]="pessoa.dataNascimento" class="form-control" name="dataNascimento"
+                required="true">
+        </div>
+
+        <div class="form-group">
+            <label for="nivelEscolaridade" class="sr-only">Nivel de escolaridade</label>
+            <input id="nivelEscolaridade" type="text" [(ngModel)]="pessoa.nivelEscolaridade" class="form-control" name="nivelEscolaridade"
+                required="true">
+        </div>
+
+        <div class="form-group">
+            <label for="cidade" class="sr-only">Cidade</label>
+            <input id="cidade" type="text" [(ngModel)]="pessoa.cidade" class="form-control" name="cidade"
+                required="true">
+        </div>
+
+        <div class="form-group">
+            <label for="estado" class="sr-only">Estado</label>
+            <input id="estado" type="text" [(ngModel)]="pessoa.estado" class="form-control" name="estado"
+                required="true">
+        </div>
+
         <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
-        <a href="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
+        <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
     </form>
 </div>

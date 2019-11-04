@@ -1,30 +1,13 @@
 <div class="container mt-3">
-    <div class="card">
-        <div class="card-header">
-            <h1>Cientistas</h1>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Email</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let cientist of cientists">
-                        <td scope="row">
-                            <div *ngIf="cientist.paga"><span>☆&nbsp;{{cientist.nome}}</span></div>
-                            <div *ngIf="!cientist.paga"><span>{{cientist.nome}}</span></div>
-                        </td>
-                        <td scope="row">{{cientist.email}}</td>
-                        <td scope="row">
-                            <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <h1>Cientistas</h1>
+    <div *ngFor="let cientist of cientist" class="row" style="width:200px">
+        <div class="card">
+            <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">{{cientist.nome}}</h4>
+                <p class="card-text">{{cientist.email}}</p>
+            </div>
+            <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
         </div>
     </div>
 </div>
