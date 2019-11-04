@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Pessoa } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
@@ -15,9 +15,14 @@ export class MenuComponent implements OnInit {
   searchForm: FormGroup;
   pessoa: Pessoa;
 
-  constructor(public authService: AuthService, 
+  constructor(
+    public formBuilder: FormBuilder,
+    public authService: AuthService, 
     public service: ServiceService,
-    public router: Router) {
+    public router: Router) { 
+    this.searchForm = this.formBuilder.group({
+      nome: ''
+    });    
   }
 
   ngOnInit() {
