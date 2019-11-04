@@ -31,7 +31,8 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit(){    
+    localStorage.removeItem("nome_pesquisa");
     this.pessoaNome.nome = this.searchForm.get('nome').value;
     localStorage.setItem("nome_pesquisa", this.pessoaNome.nome);
     this.searchForm.setValue({nome: ''});

@@ -29,11 +29,6 @@ export class MembersRecommendedComponent implements OnInit {
         this.cientists = data;
       }
     );
-    localStorage.removeItem("nome_pesquisa");
   }
 
-  gotoDetails(cientist: Pessoa){
-    localStorage.setItem("det_id", cientist.email);
-    this.router.navigate(['details']);
-  }
 }

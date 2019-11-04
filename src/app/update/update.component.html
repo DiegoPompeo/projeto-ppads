@@ -59,24 +59,24 @@
         </div>
 
         <div *ngIf="submitted">
-            <div class="form-group">
+            <div class="form-group row">
                 <label for="inputNCard" >Numero do cartão</label>
                 <input type="text" id="inputNCard"
                 [(ngModel)]="pessoa.nroCartao" class="form-control" name="nroCartao"
                  required="{{submitted}}">
             </div>
-            <div class="form-group">
-                <label for="input" class="sr-only">Nome no cartão</label>
+            <div class="form-group row">
+                <label for="input">Nome no cartão</label>
                 <input type="text" id="input" 
                 [(ngModel)]="pessoa.nomeNoCartao" class="form-control" name="nomeNoCartao" required="{{submitted}}">
             </div>
-            <div class="form-group">
-                <label for="inputDateVal" class="sr-only">Data validade</label>
+            <div class="form-group row">
+                <label for="inputDateVal">Data validade</label>
                 <input type="text" id="inputDateVal" [(ngModel)]="pessoa.dataValidade" class="form-control" 
                 name="dataValidade" required="{{submitted}}">
             </div>
-            <div class="form-group">
-                <label for="inputCodSec" class="sr-only">Codigo segurança</label>
+            <div class="form-group row">
+                <label for="inputCodSec">Codigo segurança</label>
                 <input type="text" id="inputCodSec" [(ngModel)]="pessoa.codSeg" class="form-control" name="codSeg"
                  required="{{submitted}}">
             </div>
