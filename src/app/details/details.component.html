@@ -1,20 +1,15 @@
 <div class="container mt-3" *ngIf="pessoa">
-    <div class="card card-light">
-        <div class="card-header ">
-            <td scope="row">
-                <div><h2>{{pessoa.nome}}</h2></div>
-            </td>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div>
-                    <p>Email:  {{pessoa.email}} </p>
-                    <p>Empresa: {{pessoa.empresa}}</p>
+    <div class="row">
+        <div style="width:500px">
+            <div class="card">
+                <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
+                    style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{cientist.nome}}</h4>
+                    <p class="card-text">{{cientist.email}}</p>
                 </div>
+                <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
             </div>
-            <button (click)="gotoList()" class="btn btn-dark btn-lg">
-                Voltar a lista
-            </button>
         </div>
     </div>
 </div>

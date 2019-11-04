@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pessoa } from '../model/pessoa';
+import { Pessoa, Post } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 
@@ -11,11 +11,20 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   cientist: Pessoa;
+  posts: Post[];
 
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
     this.searchProfile();
+    this.searchPosts();
+  }
+
+  searchPosts() {
+    this.service.verPost(localStorage.getItem("email"))
+    .subscribe(data => {
+      this.posts = data.slice();
+    });
   }
 
   searchProfile() {
@@ -26,7 +35,8 @@ export class ProfileComponent implements OnInit {
   }
 
   gotoUpdate(cientist: Pessoa) {
-    localStorage.setItem("id", cientist.id.toString());
+    localStorage.setItem("email", cientist.email.toString());
+    this.router.navigate(['update'])
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8"  *ngIf="authService.isAuthenticated()" >
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar">
                 <button class="btn btn-light" type="submit">Pesquisar</button>

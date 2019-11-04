@@ -1,13 +1,16 @@
 <div class="container mt-3">
     <h1>Cientistas</h1>
-    <div *ngFor="let cientist of cientists" class="row" style="width:200px">
-        <div class="card">
-            <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar" style="width:100%">
-            <div class="card-body">
-                <h4 class="card-title">{{cientist.nome}}</h4>
-                <p class="card-text">{{cientist.email}}</p>
+    <div class="row">
+        <div *ngFor="let cientist of cientists" style="width:200px">
+            <div class="card">
+                <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
+                    style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{cientist.nome}}</h4>
+                    <p class="card-text">{{cientist.email}}</p>
+                </div>
+                <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
             </div>
-            <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
         </div>
     </div>
 </div>
