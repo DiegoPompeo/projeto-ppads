@@ -5,7 +5,7 @@
                 <input class="form-control mr-sm-2" type="text" 
                 formControlName="nome"
                 placeholder="Pesquisar pelo nome">
-                <button class="btn btn-light" type="submit">Pesquisar</button>
+                <button routerLink="/recommended" class="btn btn-light" type="submit">Pesquisar</button>
             </form>
         </div>
         <div *ngIf="authService.isAuthenticated()" class="col-md-4">

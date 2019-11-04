@@ -25,7 +25,6 @@ export class MenuComponent implements OnInit {
 
   onSubmit(){
     localStorage.setItem("nome_pesquisa", this.searchForm.get('nome').value);
-    this.router.navigate(['members-recommended']);
   }
 
   logout() {

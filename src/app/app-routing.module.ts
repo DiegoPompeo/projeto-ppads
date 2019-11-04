@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'details', component: DetailsComponent,canActivate: [AuthGuard]},
   {path: 'cientists', component: ListCientistsComponent,canActivate: [AuthGuard]},
   {path: 'post', component: PostComponent,canActivate: [AuthGuard]},
-  {path: 'members-recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
+  {path: 'recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
 ];
 
 @NgModule({
