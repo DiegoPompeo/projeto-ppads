@@ -21,13 +21,15 @@ export class MembersRecommendedComponent implements OnInit {
   }
 
   getPessoas(){
+    let nome = localStorage.getItem("nome_pesquisa");
     this.service
-    .findByName(localStorage.getItem("nome_pesquisa"))
+    .findByName(nome)
     .subscribe(
       data => {
         this.cientists = data;
       }
     );
+    localStorage.removeItem("nome_pesquisa");
   }
 
   gotoDetails(cientist: Pessoa){

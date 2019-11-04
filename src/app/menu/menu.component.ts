@@ -34,6 +34,7 @@ export class MenuComponent implements OnInit {
   onSubmit(){
     this.pessoaNome.nome = this.searchForm.get('nome').value;
     localStorage.setItem("nome_pesquisa", this.pessoaNome.nome);
+    this.searchForm.get('nome').value = '';
   }
 
   logout() {
