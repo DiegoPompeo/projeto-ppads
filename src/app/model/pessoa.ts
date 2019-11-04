@@ -21,6 +21,10 @@ export class Pessoa {
     qualidades: string;
 }
 
+export class PessoaNome{
+    nome: string;
+}
+
 export class PessoaLogin{
     email: string;
     senha: string;
