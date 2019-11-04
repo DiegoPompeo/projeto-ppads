@@ -34,6 +34,7 @@ export class SearchComponent implements OnInit {
   onSubmit() {
     let nome = this.searchForm.get('nome').value;
     localStorage.setItem("nome_pesquisa", nome);
+    this.router.navigate(['recommended']);
   }
 
 }
