@@ -17,25 +17,26 @@ export class MenuComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    public authService: AuthService, 
+    public authService: AuthService,
     public service: ServiceService,
-    public router: Router) { 
+    public router: Router) {
     this.searchForm = this.formBuilder.group({
       nome: ''
-    });   
+    });
     this.pessoaNome = {
       nome: ''
-    } 
+    }
   }
 
   ngOnInit() {
   }
 
-  onSubmit(){    
+  onSubmit() {
     this.pessoaNome.nome = this.searchForm.get('nome').value;
     localStorage.setItem("nome_pesquisa", this.pessoaNome.nome);
-    this.searchForm.setValue({nome: ''});
-    this.ngOnInit();
+    this.router.navigateByUrl('/recommended', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['recommended']);
+    });
   }
 
   logout() {
