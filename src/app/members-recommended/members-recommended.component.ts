@@ -20,7 +20,8 @@ export class MembersRecommendedComponent implements OnInit {
     this.getPessoas();
   }
 
-  getPessoas(){
+  getPessoas(){    
+    this.ngOnInit();
     let nome = localStorage.getItem("nome_pesquisa");
     this.service
     .findByName(nome)
