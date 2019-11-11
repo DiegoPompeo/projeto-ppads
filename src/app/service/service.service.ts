@@ -53,7 +53,7 @@ export class ServiceService {
 
   //ListGlossary
   listaGlossary(){
-    return this.http.get<Glossario[]>(this.url + "/glossario");
+    return this.http.get<Glossario[]>("https://server-redesocial.herokuapp.com/redesocial/glossario");
   }
 
    
