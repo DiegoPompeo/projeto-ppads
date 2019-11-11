@@ -13,6 +13,18 @@
             <p class="mb-3 text"><b>{{cientist.dataNascimento}}</b></p>
             <p class="mb-3 text"><b>{{cientist.inicioDaAtividade}}</b></p>
             <button class="btn btn-block btn-info" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
+            <h3>Solicitação de amizade</h3>
+            <div *ngIf="solicita" class="mb-4">
+                <div *ngFor="let s of solicita">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p><b>{{s.nome}}</b> solicitou amizade</p>
+                            <button class="btn btn-success mr-3" (click)="aceita(s)">Aceitar</button>
+                            <button class="btn btn-danger" (click)="recusa(s)">Recusar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-9">
             <h3>Posts</h3>

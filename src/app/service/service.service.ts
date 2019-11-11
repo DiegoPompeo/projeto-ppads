@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa, Post, Glossario } from '../model/pessoa';
+import { Pessoa, Post, Glossario, Amizade } from '../model/pessoa';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
 
-  //Read
-  listar() {
+   //Read
+   listar() {
     return this.http.get<Pessoa[]>(this.url);
   }
 
@@ -27,27 +27,48 @@ export class ServiceService {
   }
 
   //ReadByEmail
-  getCientist(email: string) {
+  getCientist(email: string){
     return this.http.get<Pessoa>(this.url + "/buscar/" + email);
   }
 
-  //SearchByName
-  findByName(nome: string){
-    return this.http.get<Pessoa[]>(this.url + "/buscarCientista/" + nome);
-  }
-
   //AddPost
-  addPost(post: Post) {
+  addPost(post: Post){
     return this.http.post<Post>(this.url + "/addPost", post);
   }
 
   //ReadPostByEmail
-  verPost(email: string) {
-    return this.http.get<Post[]>(this.url + "/verPost/" + email);
+  verPost(email: string){
+    return this.http.get<Post[]>(this.url+ "/verPost/" + email);
+  }
+
+  //AddGlossary
+  addGlossary(glossario: Glossario){
+    return this.http.post<Glossario>(this.url + "/addGlossario", glossario);
   }
 
   //ListGlossary
   listaGlossary(){
-    return this.http.get<Glossario[]>("https://server-redesocial.herokuapp.com/redesocial/glossario");
+    return this.http.get<Glossario[]>(this.url + "/glossario");
+  }
+
+   
+  //SolicitaAmizade
+  solicitaAmizade(amizade: Amizade) {
+    return this.http.post<Amizade>(this.url + "/amizade", amizade);
+  }
+ 
+  //ListarAmizade
+  listaAmizade(){
+    return this.http.get<Amizade[]>(this.url + "/listaAmizade")
+  }
+ 
+  //AtualizaSolicitacao
+  atualizaSolicitacao(amizade: Amizade){
+    return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" + amizade.emailMandatario, amizade);
+  }
+ 
+  //ReadByEmailMandatario
+  findByEmailMandatario(email: string){
+    return this.http.get<Amizade[]>(this.url + "/getAmizade/" + email)
   }
 }

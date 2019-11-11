@@ -15,4 +15,19 @@
         </div>
         <div class="btn btn-info" (click)="gotoList()">Voltar a lista</div>
     </div>
+    <div class="card">
+        <div class="col-md-3">
+            <h3>Interesses</h3>
+            <div *ngIf="interesses">
+                <ul *ngFor="let x of interesses;">
+                    <li>{{x}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="auth">
+        <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao"
+        (click)="solicitarAmizade()">Solicitar amizade</button>
+    </div>
 </div>

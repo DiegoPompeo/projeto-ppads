@@ -12,12 +12,15 @@ export class ProfileComponent implements OnInit {
 
   cientist: Pessoa;
   posts: Post[];
+  solicita: Pessoa[] = new Array<Pessoa>();
+  mandatario: Pessoa = new Pessoa();
 
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
     this.searchProfile();
     this.searchPosts();
+    this.listaSolicitacao();
   }
 
   searchPosts() {
@@ -37,6 +40,24 @@ export class ProfileComponent implements OnInit {
   gotoUpdate(cientist: Pessoa) {
     localStorage.setItem("email", cientist.email.toString());
     this.router.navigate(['update'])
+  }
+
+  listaSolicitacao(){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].emailRemetente == localStorage.getItem("email")
+          && (data[i].aceite == false && data[i].recusado == false) && data[i].solicitado == true) {
+            this.service.getCientist(data[i].emailMandatario).subscribe(
+              x => {
+                this.mandatario = x;
+                this.solicita.push(this.mandatario);
+              }
+            )
+          }          
+        }
+      }
+    );
   }
 
 }

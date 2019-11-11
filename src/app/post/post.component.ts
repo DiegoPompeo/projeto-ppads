@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Post } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -14,7 +15,8 @@ export class PostComponent implements OnInit {
   post: Post;
 
   constructor(private formBuilder: FormBuilder,
-    private service: ServiceService) {
+    private service: ServiceService,
+    private router: Router) {
     this.registerForm = this.formBuilder.group({
       conteudo: '',
       email: ''
@@ -30,9 +32,10 @@ export class PostComponent implements OnInit {
   onSubmit() {
     this.post.conteudo = this.registerForm.get('conteudo').value;
     this.post.email = localStorage.getItem("email");
-    this.ngOnInit();
     this.service.addPost(this.post).subscribe(data => { 
-    });       
+    });
+    this.ngOnInit();
+    this.router.navigate(["profile"]);
   }
   
   ngOnInit() {
