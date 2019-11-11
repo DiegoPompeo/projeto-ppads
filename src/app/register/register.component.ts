@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
       estado:  '',
       salario:  '',
       interesse: '',
-      curtidas: 0,
+      curtida: 0,
       paga: null
     }
   }
