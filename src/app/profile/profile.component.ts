@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   cientist: Pessoa;
+  cientistas: Pessoa[];
+  post: Post;
   posts: Post[];
+  atualiza = false;
   solicita: Pessoa[] = new Array<Pessoa>();
   mandatario: Pessoa = new Pessoa();
 
@@ -40,6 +43,41 @@ export class ProfileComponent implements OnInit {
   gotoUpdate(cientist: Pessoa) {
     localStorage.setItem("email", cientist.email.toString());
     this.router.navigate(['update'])
+  }
+
+  
+  aceita(p: Pessoa){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == false && data[i].recusado == false 
+            && data[i].emailMandatario == p.email && data[i].emailRemetente == localStorage.getItem("email")
+            && data[i].solicitado == true) {
+            data[i].aceite = true;
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
+            this.solicita.splice(i);
+          }
+        }
+      }
+    );
+  }
+  
+  recusa(p: Pessoa){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == false 
+            && data[i].recusado == false 
+            && data[i].emailMandatario == p.email 
+            && data[i].emailRemetente == localStorage.getItem("email")
+            && data[i].solicitado == true) {
+            data[i].recusado = true;
+            this.solicita.splice(i);
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});            
+          }
+        }
+      }
+    );
   }
 
   listaSolicitacao(){
