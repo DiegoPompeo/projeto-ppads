@@ -11,6 +11,11 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
 
+  //FindByName
+  findByName(nome: string){
+    return this.http.get<Pessoa[]>(this.url + "/buscarCientista/" + nome);
+  }
+
    //Read
    listar() {
     return this.http.get<Pessoa[]>(this.url);
