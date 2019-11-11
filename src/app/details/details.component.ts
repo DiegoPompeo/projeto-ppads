@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pessoa, Amizade } from '../model/pessoa';
+import { Pessoa, Amizade, Post } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 
@@ -11,9 +11,15 @@ import { Router } from '@angular/router';
 export class DetailsComponent implements OnInit {
 
   pessoa: Pessoa;
-  interesses: any;
+  cientistas: Pessoa[];
+  post: Post;
+  posts: Post[];
+  interesses: any;emailLogado: string;
   auth: boolean = false;
   desabilitaSolicitacao = false;
+  desabilita: boolean;
+  recomendou = false;
+  curtidas: string;
   amizade: Amizade = new Amizade();
 
   constructor(private service: ServiceService, private router: Router) {
@@ -21,8 +27,54 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.Detalhe();
+    this.searchPosts();
     this.verificaSolicitacao();
+
+    if(localStorage.getItem("recomendou") == "true"){
+      this.recomendou = true;
+    }
+    if(localStorage.getItem("recomendou") == "false"){
+      this.recomendou = false;
+    }
+
+    this.curtidas = localStorage.getItem("curtidas");
+
+    this.emailLogado = localStorage.getItem("email");
+    if (!(this.emailLogado == localStorage.getItem("det_email"))) {
+      this.auth = true;
+    }
   }
+  recomendar() {
+    this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+      data => {
+        data.curtida++;
+        this.service.atualizarPerfil(data).subscribe(x => {
+        })
+      }
+    );
+    localStorage.setItem("recomendou", "true");
+    this.ngOnInit();
+  }
+
+  desrecomendar() {
+    this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+      data => {
+        data.curtida--;
+        this.service.atualizarPerfil(data).subscribe(x => {
+        })
+      }
+    );
+    localStorage.setItem("recomendou", "false");
+    this.router.navigate(["up"]);
+  }
+
+
+  searchPosts() {
+    this.service.verPost(localStorage.getItem("det_email")).subscribe(data => {
+      this.posts = data.reverse();
+    });
+  }
+
 
   solicitarAmizade() {
     this.amizade.emailMandatario = localStorage.getItem("email");

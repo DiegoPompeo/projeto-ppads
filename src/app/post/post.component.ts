@@ -13,6 +13,7 @@ export class PostComponent implements OnInit {
 
   registerForm: FormGroup;
   post: Post;
+  submit = false;
 
   constructor(private formBuilder: FormBuilder,
     private service: ServiceService,
@@ -32,10 +33,10 @@ export class PostComponent implements OnInit {
   onSubmit() {
     this.post.conteudo = this.registerForm.get('conteudo').value;
     this.post.email = localStorage.getItem("email");
+    this.submit = true;
     this.service.addPost(this.post).subscribe(data => { 
     });
     this.ngOnInit();
-    this.router.navigate(["profile"]);
   }
   
   ngOnInit() {
