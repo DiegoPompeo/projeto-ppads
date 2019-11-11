@@ -13,7 +13,7 @@ export class PostComponent implements OnInit {
 
   registerForm: FormGroup;
   post: Post;
-  submit = false;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
     private service: ServiceService,
@@ -33,7 +33,7 @@ export class PostComponent implements OnInit {
   onSubmit() {
     this.post.conteudo = this.registerForm.get('conteudo').value;
     this.post.email = localStorage.getItem("email");
-    this.submit = true;
+    this.submitted = true;
     this.service.addPost(this.post).subscribe(data => { 
     });
     this.ngOnInit();

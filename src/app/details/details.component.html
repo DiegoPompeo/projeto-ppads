@@ -1,36 +1,34 @@
 <div class="container mt-3" *ngIf="pessoa">
     <div class="card">
         <div class="row">
-            <img class="card-img-top col-md-6" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
+            <img class="card-img-top col-md-3" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
                 style="width:100%">
-            <div class="card-body col-md-6">
-                <h4 class="card-title">{{pessoa.nome}}</h4>
-                <p class="card-text">{{pessoa.email}}</p>
-                <p class="card-text">{{pessoa.cidade}}</p>
-                <p class="card-text">{{pessoa.estado}}</p>
-                <p class="card-text">{{pessoa.dataNascimento}}</p>
-                <p class="card-text">{{pessoa.nivelEscolaridade}}</p>
-                <p class="card-text">{{pessoa.empresa}}</p>
+            <div class="card-body col-md-9">
+                <h4 class="card-title"><b>Nome: </b>{{pessoa.nome}}</h4>
+                <p class="card-text"><b>Email para contato: </b>{{pessoa.email}}</p>
+                <p class="card-text"><b>Cidade: </b>{{pessoa.cidade}}</p>
+                <p class="card-text"><b>Estado: </b>{{pessoa.estado}}</p>
+                <p class="card-text"><b>Data de nascimento: </b>{{pessoa.dataNascimento}}</p>
+                <p class="card-text"><b>Nivel escolar: </b>{{pessoa.nivelEscolaridade}}</p>
+                <p class="card-text"><b>Empresa: </b>{{pessoa.empresa}}</p>
             </div>
         </div>
         <div class="btn btn-info" (click)="gotoList()">Voltar a lista</div>
     </div>
-    <div class="card">
-        <div class="col-md-3">
-            <h3>Interesses</h3>
-            <div *ngIf="interesses">
-                <ul *ngFor="let x of interesses;">
-                    <li>{{x}}</li>
-                </ul>
-            </div>
-            <div *ngIf="!interesses">
-                <span>Não há nenhum interesse cadastrado.</span>
-            </div>
+    <div class="card mt-3">
+        <h3>Interesses</h3>
+        <div *ngIf="interesses">
+            <ul *ngFor="let x of interesses;">
+                <li>{{x}}</li>
+            </ul>
+        </div>
+        <div *ngIf="!interesses">
+            <span>Não há nenhum interesse cadastrado.</span>
+        </div>
+        <div *ngIf="auth">
+            <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao" (click)="solicitarAmizade()">Solicitar
+                amizade</button>
         </div>
     </div>
 
-    <div *ngIf="auth">
-        <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao"
-        (click)="solicitarAmizade()">Solicitar amizade</button>
-    </div>
 </div>
