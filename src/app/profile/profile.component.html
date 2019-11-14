@@ -5,14 +5,17 @@
             <span>
                 <i style="font-size: 200px;" class="large material-icons">account_circle</i>
             </span>
-            <p class="mb-3 text"><b>{{cientist.email}}</b></p>
-            <p class="mb-3 text"><b>{{cientist.empresa}}</b></p>
-            <p class="mb-3 text"><b>{{cientist.cidade}}</b></p>
-            <p class="mb-3 text"><b>{{cientist.estado}}</b></p>
-            <p class="mb-3 text"><b>{{cientist.nivelEscolaridade}}</b></p>
-            <p class="mb-3 text"><b>{{cientist.dataNascimento}}</b></p>
-            <p class="mb-3 text"><b>{{cientist.inicioDaAtividade}}</b></p>
+            <p class="mb-3 text">Nome: <b>{{cientist.email}}</b></p>
+            <p class="mb-3 text">Empresa: <b>{{cientist.empresa}}</b></p>
+            <p class="mb-3 text">Cidade: <b>{{cientist.cidade}}</b></p>
+            <p class="mb-3 text">Estado: <b>{{cientist.estado}}</b></p>
+            <p class="mb-3 text">Nível Escolar: <b>{{cientist.nivelEscolaridade}}</b></p>
+            <p class="mb-3 text">Data de nascimento: <b>{{cientist.dataNascimento}}</b></p>
+            <p class="mb-3 text">Inicio da atividade: <b>{{cientist.inicioDaAtividade}}</b></p>
             <button class="btn btn-block btn-info" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
+            <div *ngIf="cientist.paga">                
+                <a routerLink="/search" class="btn btn-block btn-info">Pesquisar membros</a>
+            </div>
             <h3>Solicitação de amizade</h3>
             <div *ngIf="solicita" class="mb-4">
                 <div *ngFor="let s of solicita">
