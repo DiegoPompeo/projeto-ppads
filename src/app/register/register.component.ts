@@ -87,8 +87,8 @@ export class RegisterComponent implements OnInit {
           this.pessoa.dataValidade = this.registerForm.get('dataValidade').value;
           this.pessoa.codSeg = this.registerForm.get('codSeg').value;
           
-          this.pessoa.inicioDaAtividade = this.registerForm.get('inicioDaAtividade').value;
-          this.pessoa.dataNascimento = this.registerForm.get('dataNascimento').value;
+          this.pessoa.inicioDaAtividade = this.registerForm.get('inicioDaAtividade').value.toString();
+          this.pessoa.dataNascimento = this.registerForm.get('dataNascimento').value.toString();
           this.pessoa.nivelEscolaridade = this.registerForm.get('nivelEscolaridade').value;
           this.pessoa.cidade = this.registerForm.get('cidade').value;
           this.pessoa.estado = this.registerForm.get('estado').value;
