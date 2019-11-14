@@ -14,7 +14,7 @@
             <p class="mb-3 text">Inicio da atividade: <b>{{cientist.inicioDaAtividade}}</b></p>
             <button class="btn btn-block btn-info" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
             <div *ngIf="cientist.paga">                
-                <a routerLink="/search" class="btn btn-block btn-info">Pesquisar membros</a>
+                <a routerLink="/search" class="btn btn-block btn-info mt-3">Pesquisar membros</a>
             </div>
             <h3>Solicitação de amizade</h3>
             <div *ngIf="solicita" class="mb-4">
