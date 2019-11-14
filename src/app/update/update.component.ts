@@ -12,6 +12,7 @@ export class UpdateComponent implements OnInit {
 
   submitted = false;
   pessoa: Pessoa;
+  up = false;
 
   constructor(private service: ServiceService, 
     private router: Router) { }
@@ -41,7 +42,7 @@ export class UpdateComponent implements OnInit {
     this.submitted = false;
   }
 
-  Atualizar(pessoa: Pessoa){
+  Atualizar(pessoa: Pessoa){    
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa.dataNascimento = data.dataNascimento.toString();
@@ -49,6 +50,7 @@ export class UpdateComponent implements OnInit {
         this.pessoa = data;
       }
     );
+    this.up = true;
   }
 
   edit() {

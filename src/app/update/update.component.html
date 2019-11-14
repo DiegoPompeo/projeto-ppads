@@ -55,29 +55,36 @@
 
         <div *ngIf="submitted">
             <div class="form-group row">
-                <label for="inputNCard" >Numero do cartão</label>
-                <input type="text" id="inputNCard"
-                [(ngModel)]="pessoa.nroCartao" class="form-control" name="nroCartao"
-                 required="{{submitted}}">
+                <label for="inputNCard">Numero do cartão</label>
+                <input type="text" id="inputNCard" [(ngModel)]="pessoa.nroCartao" class="form-control" name="nroCartao"
+                    required="{{submitted}}">
             </div>
             <div class="form-group row">
                 <label for="input">Nome no cartão</label>
-                <input type="text" id="input" 
-                [(ngModel)]="pessoa.nomeNoCartao" class="form-control" name="nomeNoCartao" required="{{submitted}}">
+                <input type="text" id="input" [(ngModel)]="pessoa.nomeNoCartao" class="form-control" name="nomeNoCartao"
+                    required="{{submitted}}">
             </div>
             <div class="form-group row">
                 <label for="inputDateVal">Data validade</label>
-                <input type="text" id="inputDateVal" [(ngModel)]="pessoa.dataValidade" class="form-control" 
-                name="dataValidade" required="{{submitted}}">
+                <input type="text" id="inputDateVal" [(ngModel)]="pessoa.dataValidade" class="form-control"
+                    name="dataValidade" required="{{submitted}}">
             </div>
             <div class="form-group row">
                 <label for="inputCodSec">Codigo segurança</label>
                 <input type="text" id="inputCodSec" [(ngModel)]="pessoa.codSeg" class="form-control" name="codSeg"
-                 required="{{submitted}}">
+                    required="{{submitted}}">
             </div>
         </div>
 
         <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
         <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
     </form>
+    <div class="mt-3 mb-3" *ngIf="up">
+        <div class="center alert alert-info">
+            <p class="text-center">Cadastro atualizado com sucesso.</p>
+            <div class="text-center">
+                <button routerLink="/profile" class="item-center-align btn-block btn-info">Voltar ao perfil</button>
+            </div>
+        </div>
+    </div>
 </div>
