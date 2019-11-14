@@ -10,10 +10,10 @@
             <p class="mb-3 text">Cidade: <b>{{cientist.cidade}}</b></p>
             <p class="mb-3 text">Estado: <b>{{cientist.estado}}</b></p>
             <p class="mb-3 text">Nível Escolar: <b>{{cientist.nivelEscolaridade}}</b></p>
-            <p class="mb-3 text">Data de nascimento: <b>{{cientist.dataNascimento}}</b></p>
-            <p class="mb-3 text">Inicio da atividade: <b>{{cientist.inicioDaAtividade}}</b></p>
+            <p class="mb-3 text">Data de nascimento: <b>{{pessoa.dataNascimento}}</b></p>
+            <p class="mb-3 text">Inicio da atividade: <b>{{pessoa.inicioDaAtividade}}</b></p>
             <button class="btn btn-block btn-info" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
-            <div *ngIf="cientist.paga">                
+            <div *ngIf="cientist.paga">
                 <a routerLink="/search" class="btn btn-block btn-info mt-3">Pesquisar membros</a>
             </div>
             <h3>Solicitação de amizade</h3>
@@ -30,6 +30,14 @@
             </div>
         </div>
         <div class="col-md-9">
+            <div class="mb-3">
+                <h3>Meus interesses</h3>
+                <div *ngIf="interesses">
+                    <div *ngFor="let x of interesses;" class="card bg-primary text-white">
+                        <div class="card-body">{{x}}</div>
+                    </div>
+                </div>
+            </div>
             <h3>Posts</h3>
             <div *ngIf="posts">
                 <div *ngFor="let post of posts">
