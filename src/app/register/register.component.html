@@ -1,7 +1,4 @@
-<div class="container justify-content-center">
-    <div *ngIf="msgSuccess">
-        <app-register-success></app-register-success>
-    </div>            
+<div class="container justify-content-center">          
     <h4>Deseja tornar conta premium?</h4>
     <div class="btn-group mb-3" role="group">
         <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
@@ -79,6 +76,9 @@
                     placeholder="Código segurança" required="{{submitted}}">
             </div>
         </div>
-        <button class="btn btn-lg btn-primary" type="submit">Cadastrar</button>
+        <button class="btn btn-lg btn-primary mb-3" type="submit">Cadastrar</button>
     </form>
+    <div *ngIf="msgSuccess">
+        <app-register-success></app-register-success>
+    </div>
 </div>

@@ -44,8 +44,9 @@ export class UpdateComponent implements OnInit {
   Atualizar(pessoa: Pessoa){
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
+        this.pessoa.dataNascimento = data.dataNascimento.toString();
+        this.pessoa.inicioDaAtividade = data.inicioDaAtividade.toString();
         this.pessoa = data;
-        this.router.navigate(['profile']);
       }
     );
   }
