@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   pessoa: Pessoa = new Pessoa();
   cientistas: Pessoa[];
   post: Post;
-  posts: Post[];
+  posts: Post[] = new Post[1];
   atualiza = false;
   solicita: Pessoa[] = new Array<Pessoa>();
   mandatario: Pessoa = new Pessoa();  
@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
   searchPosts() {
     this.service.verPost(localStorage.getItem("email"))
     .subscribe(data => {
-      this.posts = data.slice();
+      this.posts = data.reverse();
     });
   }
 
