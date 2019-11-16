@@ -33,9 +33,9 @@
             <div class="mb-3">
                 <h3>Meus interesses</h3>
                 <div *ngIf="interesses">
-                    <div *ngFor="let x of interesses;" class="card row bg-primary text-white col-md-3 mb-3">
-                        <div class="card-body">{{x}}</div>
-                    </div>
+                    <ul  class="list-group"  *ngFor="let x of interesses;">
+                        <li  class="list-group-item" class="card-body">{{x}}</li>
+                    </ul>
                 </div>
             </div>
             <h3>Posts</h3>
