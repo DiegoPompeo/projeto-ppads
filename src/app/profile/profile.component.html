@@ -32,8 +32,8 @@
         <div class="col-md-9">
             <div class="mb-3">
                 <h3>Meus interesses</h3>
-                <div *ngIf="interesses" class="row">
-                    <div *ngFor="let x of interesses;" class="card bg-primary text-white col-md-3">
+                <div *ngIf="interesses">
+                    <div *ngFor="let x of interesses;" class="card row bg-primary text-white col-md-3 mb-3">
                         <div class="card-body">{{x}}</div>
                     </div>
                 </div>
