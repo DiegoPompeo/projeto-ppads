@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   pessoa: Pessoa = new Pessoa();
   cientistas: Pessoa[];
   post: Post;
-  posts: Post[] = new Post[1];
+  posts: Post[] = new Post[];
   atualiza = false;
   solicita: Pessoa[] = new Array<Pessoa>();
   mandatario: Pessoa = new Pessoa();  
