@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class DetailsComponent implements OnInit {
 
   pessoa: Pessoa;
+  cientista: Pessoa = new Pessoa();
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
@@ -108,9 +109,9 @@ export class DetailsComponent implements OnInit {
         let str = data.dataNascimento.toString();
         let array = str.split("-");
         let final = array[2] + "/" + array[1] + "/" + array[0];
-        this.pessoa.dataNascimento = final.toString();
+        this.cientista.dataNascimento = final.toString();
 
-        this.pessoa.inicioDaAtividade = data.inicioDaAtividade.toString();
+        this.cientista.inicioDaAtividade = data.inicioDaAtividade.toString();
         
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
