@@ -112,7 +112,6 @@ export class ProfileComponent implements OnInit {
         }
       }
     );
-    this.ngOnInit();
   }
   
   recusa(p: Pessoa){
