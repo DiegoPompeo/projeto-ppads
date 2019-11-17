@@ -94,16 +94,26 @@ export class ProfileComponent implements OnInit {
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == false && data[i].recusado == false 
-            && data[i].emailMandatario == p.email && data[i].emailRemetente == localStorage.getItem("email")
+          if (data[i].aceite == false 
+            && data[i].recusado == false 
+            && data[i].emailMandatario == p.email 
+            && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
             data[i].aceite = true;
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
-            this.solicita.splice(i);
+            data[i].solicitado = false;
+
+            this.service.getCientist(data[i].emailMandatario).subscribe(
+              x => {
+                this.solicita.splice(this.solicita.indexOf(x))
+              }
+            );
+            
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
           }
         }
       }
     );
+    this.ngOnInit();
   }
   
   recusa(p: Pessoa){
@@ -115,13 +125,20 @@ export class ProfileComponent implements OnInit {
             && data[i].emailMandatario == p.email 
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
+            data[i].solicitado = false;
             data[i].recusado = true;
-            this.solicita.splice(i);
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});            
+
+            this.service.getCientist(data[i].emailMandatario).subscribe(
+              x => {
+                this.solicita.splice(this.solicita.indexOf(x))
+              }
+            );
+            
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});                      
           }
         }
       }
-    );
+    ); 
   }
 
   listaSolicitacao(){
