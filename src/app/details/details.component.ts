@@ -87,6 +87,10 @@ export class DetailsComponent implements OnInit {
             && data[i].emailMandatario == localStorage.getItem("email")
             && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
+          } else if (data[i].emailRemetente == localStorage.getItem("email")
+          && data[i].emailMandatario == localStorage.getItem("det_email")
+          && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
+            this.desabilitaSolicitacao = true;
           }
         }
       }
