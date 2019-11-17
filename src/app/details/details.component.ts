@@ -62,13 +62,11 @@ export class DetailsComponent implements OnInit {
     this.ngOnInit();
   }
 
-
   searchPosts() {
     this.service.verPost(localStorage.getItem("det_email")).subscribe(data => {
       this.posts = data.reverse();
     });
   }
-
 
   solicitarAmizade() {
     this.amizade.emailMandatario = localStorage.getItem("email");

@@ -114,12 +114,15 @@ export class ProfileComponent implements OnInit {
             && data[i].solicitado == true) {
             data[i].aceite = true;
             data[i].solicitado = false;            
+            
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
           }
         }
       }
     );
-    this.listaSolicitacao();
+    let numero = this.solicita.indexOf(p);
+    this.solicita.splice(numero);
+    this.ngOnInit();
   }
   
   recusa(p: Pessoa){
@@ -132,13 +135,19 @@ export class ProfileComponent implements OnInit {
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
             data[i].solicitado = false;
-            data[i].recusado = true;            
+            data[i].recusado = true;
+
+            this.service.getCientist(data[i].emailMandatario).subscribe(
+              x => {
+                this.solicita.splice(this.solicita.indexOf(x))
+              }
+            );
+            
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {});                      
           }
         }
       }
     ); 
-    this.listaSolicitacao();
   }
 
   listaSolicitacao(){
