@@ -101,11 +101,7 @@ export class ProfileComponent implements OnInit {
             data[i].aceite = true;
             data[i].solicitado = false;
 
-            this.service.getCientist(data[i].emailMandatario).subscribe(
-              x => {
-                this.solicita.splice(this.solicita.indexOf(x))
-              }
-            );
+            this.listaSolicitacao();
             
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
           }
@@ -125,12 +121,6 @@ export class ProfileComponent implements OnInit {
             && data[i].solicitado == true) {
             data[i].solicitado = false;
             data[i].recusado = true;
-
-            this.service.getCientist(data[i].emailMandatario).subscribe(
-              x => {
-                this.solicita.splice(this.solicita.indexOf(x))
-              }
-            );
 
             this.listaSolicitacao();
             
