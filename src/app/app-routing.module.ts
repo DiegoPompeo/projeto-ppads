@@ -13,6 +13,7 @@ import { AuthGuard } from './auth.guard';
 import { PostComponent } from './post/post.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { SearchComponent } from './search/search.component';
+import { ListFriendsComponent } from './list-friends/list-friends.component';
 
 // canActivate: [AuthGuard]
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
   {path: 'post', component: PostComponent,canActivate: [AuthGuard]},
   {path: 'interest', component: GlossaryComponent,canActivate: [AuthGuard]},
   {path: 'recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
-  {path: 'friends', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
+  {path: 'friends', component: ListFriendsComponent,canActivate: [AuthGuard]},
 ];
 
 @NgModule({
