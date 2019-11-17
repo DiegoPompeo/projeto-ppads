@@ -49,11 +49,6 @@
 
         <div class="mb-3">
             <h3>Lista de amigos</h3>
-            <div class="mt-3" *ngIf="atualiza">
-                <button class="btn btn-info btn-block" type="button" (click)="msgAtualizaAmigos()">
-                    Atualizar lista de amigos
-                </button>
-            </div>
             <div *ngIf="listaAmigos" class="row">
                 <div *ngFor="let amigo of listaAmigos">
                     <div class="container mt-3">

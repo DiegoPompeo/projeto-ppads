@@ -30,6 +30,11 @@ export class ProfileComponent implements OnInit {
     this.getAmigos();
   }
 
+  gotoDetails(cientist: Pessoa){
+    localStorage.setItem("det_id", cientist.email);
+    this.router.navigate(['details']);
+  }
+
   getAmigos(){
     this.service.listaAmizade().subscribe(
       data => {
