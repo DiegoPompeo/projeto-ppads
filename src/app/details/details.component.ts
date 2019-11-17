@@ -31,9 +31,6 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.verificaSolicitacao();
 
-    console.log("Email: ", localStorage.getItem("email"));
-    console.log("Email detalhe: ", localStorage.getItem("det_email"));
-
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
@@ -48,7 +45,6 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    this.ngOnInit();
   }
 
   desrecomendar() {
