@@ -25,10 +25,7 @@
         <div *ngIf="auth">
             <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao" (click)="solicitarAmizade()">Solicitar
                 amizade</button>
-        </div>
-
-        <div *ngIf="auth">
-            <button class="btn btn-dark mt-3">Recomendar {{pessoa.nome}}</button>
+            <button class="btn btn-dark mt-3">{{pessoa.curtida}} Recomendar {{pessoa.nome}}</button>
         </div>
     </div>
 
