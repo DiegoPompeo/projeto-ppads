@@ -23,6 +23,7 @@ export class ListFriendsComponent implements OnInit {
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
+    this.getAmigos();
   }
 
   getAmigos(){
