@@ -28,6 +28,7 @@ const routes: Routes = [
   {path: 'post', component: PostComponent,canActivate: [AuthGuard]},
   {path: 'interest', component: GlossaryComponent,canActivate: [AuthGuard]},
   {path: 'recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
+  {path: 'friends', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
 ];
 
 @NgModule({

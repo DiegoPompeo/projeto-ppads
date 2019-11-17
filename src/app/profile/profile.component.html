@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3" *ngIf="cientist">
     <div class="row">
 
-        <div class="col-md-3 mt-3">
+        <div class="col-md-4 mt-3">
             <p class="mb-3 text">Olá, <b>{{cientist.nome}}</b></p>
             <span>
                 <i style="font-size: 200px;" class="large material-icons">account_circle</i>
@@ -21,7 +21,7 @@
 
         <hr>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h3>Solicitação de amizade</h3>
             <div *ngIf="solicita" class="mt-3">
                 <div *ngFor="let s of solicita">
@@ -38,7 +38,7 @@
 
         <hr>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h3>Meus interesses</h3>
             <div *ngIf="interesses">
                 <ul class="list-group" *ngFor="let x of interesses;">
@@ -48,21 +48,6 @@
         </div>
 
         <hr>
-
-        <div class="col-md-3">
-            <h3>Lista de amigos</h3>
-            <div *ngIf="listaAmigos" class="row">
-                <div *ngFor="let amigo of listaAmigos">
-                    <div class="card mr-3 mb-3">                        
-                        <div class="card-body">
-                            <h4 class="card-title">{{amigo.nome}}</h4>
-                            <p class="card-text">{{amigo.email}}</p>
-                        </div>
-                        <div class="btn btn-info" (click)="gotoDetails(amigo)">Ver detalhes</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div>
         <h3>Posts</h3>

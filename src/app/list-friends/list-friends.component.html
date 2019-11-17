@@ -1,0 +1,14 @@
+<div class="container">
+    <h3>Lista de amigos</h3>
+    <div *ngIf="listaAmigos" class="row">
+        <div *ngFor="let amigo of listaAmigos">
+            <div class="card mr-3 mb-3">
+                <div class="card-body">
+                    <h4 class="card-title">{{amigo.nome}}</h4>
+                    <p class="card-text">{{amigo.email}}</p>
+                </div>
+                <div class="btn btn-info" (click)="gotoDetails(amigo)">Ver detalhes</div>
+            </div>
+        </div>
+    </div>
+</div>

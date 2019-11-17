@@ -5,6 +5,7 @@
             <a routerLink="/interest" class="btn btn-default">Interesses</a>
             <a routerLink="/cientists" class="btn btn-default">Lista de Cientistas</a>
             <a routerLink="/post" class="btn btn-default">Postar</a>
+            <a routerLink="/friends" class="btn btn-default">Lista de Amigos</a>
             <button class="logout btn btn-default" (click)="logout()">Logout</button>
         </div>
         <div *ngIf="!authService.isAuthenticated()">

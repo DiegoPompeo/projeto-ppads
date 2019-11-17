@@ -19,6 +19,7 @@ import { MembersRecommendedComponent } from './members-recommended/members-recom
 import { PostComponent } from './post/post.component';
 import { GlossarySuccessComponent } from './glossary-success/glossary-success.component';
 import { SearchComponent } from './search/search.component';
+import { ListFriendsComponent } from './list-friends/list-friends.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SearchComponent } from './search/search.component';
     MembersRecommendedComponent,
     PostComponent,
     GlossarySuccessComponent,
-    SearchComponent
+    SearchComponent,
+    ListFriendsComponent
   ],
   imports: [
     BrowserModule,
