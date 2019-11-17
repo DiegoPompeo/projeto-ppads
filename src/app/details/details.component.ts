@@ -119,8 +119,4 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  gotoList(){
-    this.router.navigateByUrl('/cientists');
-  }
-
 }
