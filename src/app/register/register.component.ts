@@ -95,9 +95,7 @@ export class RegisterComponent implements OnInit {
           this.pessoa.salario = this.registerForm.get('salario').value;
 
           this.pessoa.paga = this.submitted;
-
-          localStorage.setItem("email",this.pessoa.email);
-    
+              
           this.authService.register(this.pessoa).subscribe(data => { 
           });
           this.msgSuccess = true;
