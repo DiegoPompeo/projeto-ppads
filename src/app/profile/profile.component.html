@@ -1,5 +1,5 @@
 <div class="container-fluid mt-3" *ngIf="cientist">
-    <div class="row">       
+    <div class="row">
 
         <div class="col-md-3 mt-3">
             <p class="mb-3 text">Olá, <b>{{cientist.nome}}</b></p>
@@ -18,7 +18,7 @@
                 <a routerLink="/search" class="btn btn-block btn-info mt-3">Pesquisar membros</a>
             </div>
         </div>
-        
+
         <hr>
 
         <h3>Solicitação de amizade</h3>
@@ -49,7 +49,26 @@
 
         <div class="mb-3">
             <h3>Lista de amigos</h3>
-            <div></div>
+            <div class="mt-3" *ngIf="atualiza">
+                <button class="btn btn-info btn-block" type="button" (click)="msgAtualizaAmigos()">
+                    Atualizar lista de amigos
+                </button>
+            </div>
+            <div *ngIf="listaAmigos" class="row">
+                <div *ngFor="let amigo of listaAmigos">
+                    <div class="container mt-3">
+                        <div class="row">
+                            <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
+                        </div>
+                        <div class="row text-center">
+                            <span>{{amigo.nome}}</span>
+                        </div>
+                        <div scope="row">
+                            <div class="btn btn-info" (click)="gotoDetails(amigo)">Ver perfil</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-9">

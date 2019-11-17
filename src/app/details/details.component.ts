@@ -31,20 +31,12 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.verificaSolicitacao();
 
-    if(localStorage.getItem("recomendou") == "true"){
-      this.recomendou = true;
-    }
-    if(localStorage.getItem("recomendou") == "false"){
-      this.recomendou = false;
-    }
-
-    this.curtidas = localStorage.getItem("curtidas");
-
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
     }
   }
+  
   recomendar() {
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
@@ -53,7 +45,6 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    localStorage.setItem("recomendou", "true");
     this.ngOnInit();
   }
 
@@ -65,8 +56,7 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    localStorage.setItem("recomendou", "false");
-    this.router.navigate(["up"]);
+    this.ngOnInit();
   }
 
 
