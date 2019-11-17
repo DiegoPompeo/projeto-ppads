@@ -132,6 +132,8 @@ export class ProfileComponent implements OnInit {
                 this.solicita.splice(this.solicita.indexOf(x))
               }
             );
+
+            this.listaSolicitacao();
             
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {});                      
           }
