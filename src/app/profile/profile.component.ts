@@ -122,7 +122,6 @@ export class ProfileComponent implements OnInit {
     );
     let numero = this.solicita.indexOf(p);
     this.solicita.splice(numero);
-    this.ngOnInit();
   }
   
   recusa(p: Pessoa){
