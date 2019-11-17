@@ -10,7 +10,7 @@ import { Pessoa } from '../model/pessoa';
 })
 export class ListCientistsComponent implements OnInit {
 
-  cientist: Pessoa;
+  cientist: Pessoa = new Pessoa();
   cientists: Pessoa[];
 
   constructor(private service: ServiceService, private router: Router) { }
