@@ -96,8 +96,8 @@ export class DetailsComponent implements OnInit {
   }
 
   Detalhe(){
-    let id = localStorage.getItem("det_id");
-    this.service.getCientist(id).subscribe(
+    let email = localStorage.getItem("det_email");
+    this.service.getCientist(email).subscribe(
       data => {
         let str = data.dataNascimento.toString();
         let array = str.split("-");
