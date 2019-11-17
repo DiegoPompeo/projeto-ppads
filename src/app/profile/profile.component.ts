@@ -88,7 +88,6 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem("email", cientist.email.toString());
     this.router.navigate(['update'])
   }
-
   
   aceita(p: Pessoa){
     this.service.listaAmizade().subscribe(
