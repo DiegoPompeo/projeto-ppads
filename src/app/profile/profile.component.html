@@ -53,9 +53,7 @@
             <h3>Lista de amigos</h3>
             <div *ngIf="listaAmigos" class="row">
                 <div *ngFor="let amigo of listaAmigos">
-                    <div class="card mr-3 mb-3">
-                        <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
-                            style="width:50px">
+                    <div class="card mr-3 mb-3">                        
                         <div class="card-body">
                             <h4 class="card-title">{{amigo.nome}}</h4>
                             <p class="card-text">{{amigo.email}}</p>
