@@ -88,7 +88,9 @@ export class ServiceService {
  
   //AtualizaSolicitacao
   atualizaSolicitacao(amizade: Amizade){
-    return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" + amizade.emailMandatario, amizade);
+    return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" 
+    + amizade.emailMandatario + "/" + amizade.emailRemetente
+    , amizade);
   }
  
   //ReadByEmailMandatario
