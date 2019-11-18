@@ -19,8 +19,15 @@ export class ServiceService {
   }
 
   //EditRecomendacao
-  editRecomendacao(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
-    return this.http.put<PessoaRecomendada>(this.url + "/editRecomendacao/" + 
+  recomenda(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
+    return this.http.put<PessoaRecomendada>(this.url + "/recomendou/" + 
+    pessoaRecomendada.emailRecomendou + "/" + pessoaRecomendada.emailRecomendada, 
+    pessoaRecomendada);
+  }
+
+  //EditRecomendacao
+  desrecomenda(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
+    return this.http.put<PessoaRecomendada>(this.url + "/desrecomendou/" + 
     pessoaRecomendada.emailRecomendou + "/" + pessoaRecomendada.emailRecomendada, 
     pessoaRecomendada);
   }
@@ -74,7 +81,6 @@ export class ServiceService {
   listaGlossary(){
     return this.http.get<Glossario[]>("https://server-redesocial.herokuapp.com/redesocial/glossario");
   }
-
    
   //SolicitaAmizade
   solicitaAmizade(amizade: Amizade) {
