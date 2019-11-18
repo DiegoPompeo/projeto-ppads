@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa, Post, Glossario, Amizade } from '../model/pessoa';
+import { Pessoa, Post, Glossario, Amizade, PessoaRecomendada } from '../model/pessoa';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,24 @@ export class ServiceService {
   url = 'https://redecientista.herokuapp.com/redesocial'
 
   constructor(private http: HttpClient) { }
+
+
+  //AddRecomendacao
+  addRecomendacao(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
+    return this.http.post<PessoaRecomendada>(this.url + "/addRecomendacao", pessoaRecomendada);
+  }
+
+  //EditRecomendacao
+  editRecomendacao(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
+    return this.http.put<PessoaRecomendada>(this.url + "/editRecomendacao/" + 
+    pessoaRecomendada.emailRecomendou + "/" + pessoaRecomendada.emailRecomendada, 
+    pessoaRecomendada);
+  }
+
+  //ListRecomendacao
+  listaRecomendacao(){
+    return this.http.get<PessoaRecomendada[]>(this.url + "/getRecomendacao");
+  }
 
   //FindByName
   findByName(nome: string){

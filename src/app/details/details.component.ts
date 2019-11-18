@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pessoa, Amizade, Post } from '../model/pessoa';
+import { Pessoa, Amizade, Post, PessoaRecomendada } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 
@@ -22,6 +22,8 @@ export class DetailsComponent implements OnInit {
   recomendou = false;
   curtidas: string;
   amizade: Amizade = new Amizade();
+  pessoaRecomendada: PessoaRecomendada = new PessoaRecomendada();
+  listaRecomendadas: PessoaRecomendada[];
 
   constructor(private service: ServiceService, private router: Router) {
   }
@@ -37,7 +39,35 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  verificaRecomendar() {
+    this.service.listaRecomendacao()
+      .subscribe(data => {
+        for (let i = 0; i < data.length; i++) {
+          if ((
+            data[i].emailRecomendou == localStorage.getItem("email")
+            && data[i].emailRecomendada == localStorage.getItem("det_email"))
+            && data[i].desfazer == false) {
+            this.recomendou = true;
+          } else if ((
+            data[i].emailRecomendou == localStorage.getItem("email")
+            && data[i].emailRecomendada == localStorage.getItem("det_email"))
+            && data[i].desfazer == true) {
+            this.recomendou = false;
+          } else {
+            this.recomendou = false;
+          }
+        }
+      })
+  }
+
   recomendar() {
+    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
+    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
+    this.pessoaRecomendada.desfazer = false;
+    this.recomendou = true;
+
+    this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida++;
@@ -48,6 +78,9 @@ export class DetailsComponent implements OnInit {
   }
 
   desrecomendar() {
+    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
+    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
+    this.pessoaRecomendada.desfazer = true;
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida--;
@@ -55,7 +88,15 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    this.ngOnInit();
+
+    this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
+      data => {
+      }
+    );
+
+    this.recomendou = false;
+
+
   }
 
   searchPosts() {

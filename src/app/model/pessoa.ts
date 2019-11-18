@@ -51,3 +51,10 @@ export class Amizade{
     solicitado: boolean;
 }
 
+export class PessoaRecomendada{
+    id: number;
+    emailRecomendou: string;
+    emailRecomendada: string;
+    desfazer: boolean;
+}
+
