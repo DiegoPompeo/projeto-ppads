@@ -52,6 +52,19 @@
     </div>
 
     <div class="mb-3">
-        
+        <h3>Amigos em comum</h3>
+        <div *ngFor="let amigo of amigosEmComum">
+            <div class="container mt-3">
+                <div class="row">
+                    <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
+                </div>
+                <div class="row text-center">
+                    <span>{{amigo.nome}}</span>
+                </div>
+                <div scope="row">
+                    <div class="btn btn-info" (click)="gotoDetails(amigo)">Ver perfil</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
