@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pessoa, Post } from '../model/pessoa';
+import { Pessoa, Post, Amizade } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 
@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   mandatario: Pessoa = new Pessoa();  
   interesses: any;
   listaAmigos: Pessoa[] = new Array<Pessoa>();
+  amizadeAux: Amizade = new Amizade();
 
   constructor(private service: ServiceService, private router: Router) { }
 
@@ -87,10 +88,11 @@ export class ProfileComponent implements OnInit {
             && data[i].emailMandatario == p.email 
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
-            data[i].aceite = true;
-            data[i].solicitado = false;            
+            this.amizadeAux = data[i];
+            this.amizadeAux.aceite = true;
+            this.amizadeAux.solicitado = false;
             
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
+            this.service.atualizaSolicitacao(this.amizadeAux).subscribe(data => {}); 
           }
         }
       }
@@ -108,10 +110,11 @@ export class ProfileComponent implements OnInit {
             && data[i].emailMandatario == p.email 
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
-            data[i].solicitado = false;
-            data[i].recusado = true;
+            this.amizadeAux = data[i];
+            this.amizadeAux.recusado = true;
+            this.amizadeAux.solicitado = false;
             
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});                      
+            this.service.atualizaSolicitacao(this.amizadeAux).subscribe(data => {});                      
           }
         }
       }
