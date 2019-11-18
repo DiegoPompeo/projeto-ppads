@@ -44,6 +44,7 @@ export class DetailsComponent implements OnInit {
     this.getAmigos();
     this.getDetAmigos();
     this.intersecao();
+    this.verificaRecomendar()
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
