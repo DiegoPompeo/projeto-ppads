@@ -86,9 +86,16 @@ export class ServiceService {
     return this.http.get<Amizade[]>(this.url + "/listaAmizade")
   }
  
-  //AtualizaSolicitacao
-  atualizaSolicitacao(amizade: Amizade){
+  //AceitaSolicitacao
+  aceitaSolicitacao(amizade: Amizade){
     return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" 
+    + amizade.emailMandatario + "/" + amizade.emailRemetente
+    , amizade);
+  }
+
+  //RecusaSolicitacao
+  recusaSolicitacao(amizade: Amizade){
+    return this.http.put<Amizade>(this.url + "/recusaSolicitacao/" 
     + amizade.emailMandatario + "/" + amizade.emailRemetente
     , amizade);
   }

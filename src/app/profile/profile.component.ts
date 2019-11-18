@@ -89,10 +89,8 @@ export class ProfileComponent implements OnInit {
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
             this.amizadeAux = data[i];
-            this.amizadeAux.aceite = true;
-            this.amizadeAux.solicitado = false;
             
-            this.service.atualizaSolicitacao(this.amizadeAux).subscribe(data => {}); 
+            this.service.aceitaSolicitacao(this.amizadeAux).subscribe(data => {}); 
           }
         }
       }
@@ -111,10 +109,8 @@ export class ProfileComponent implements OnInit {
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
             this.amizadeAux = data[i];
-            this.amizadeAux.recusado = true;
-            this.amizadeAux.solicitado = false;
             
-            this.service.atualizaSolicitacao(this.amizadeAux).subscribe(data => {});                      
+            this.service.recusaSolicitacao(this.amizadeAux).subscribe(data => {});                      
           }
         }
       }
