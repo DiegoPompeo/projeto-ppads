@@ -32,8 +32,8 @@ export class DetailsComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) {
   }
 
-  gotoDetails(){
-    localStorage.setItem("det_email", this.cientista.email);
+  gotoDetails(cientista: Pessoa){
+    localStorage.setItem("det_email", cientista.email);
     this.router.navigate(["details"]);
   }
 
