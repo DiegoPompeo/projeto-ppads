@@ -11,7 +11,7 @@ import { ServiceService } from '../service/service.service';
 export class UpdateComponent implements OnInit {
 
   submitted = false;
-  pessoa: Pessoa;
+  pessoa: Pessoa = new Pessoa();
   up = false;
 
   constructor(private service: ServiceService, 
