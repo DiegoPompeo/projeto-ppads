@@ -74,10 +74,10 @@ export class ProfileComponent implements OnInit {
 
         if(days < 365){
           let final2 = Math.ceil(days/12);
-          this.pessoa.inicioDaAtividade = final2.toString() + "mes(es)";
+          this.pessoa.inicioDaAtividade = final2.toString() + " mes(es)";
         } else {
           let final2 = Math.ceil(days/365);
-          this.pessoa.inicioDaAtividade = final2.toString() + "ano(s)";
+          this.pessoa.inicioDaAtividade = final2.toString() + " ano(s)";
         }
         
         this.cientist = data;
