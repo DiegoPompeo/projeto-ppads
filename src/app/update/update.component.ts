@@ -43,6 +43,7 @@ export class UpdateComponent implements OnInit {
   }
 
   Atualizar(pessoa: Pessoa){    
+    pessoa.paga = this.submitted;
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa.dataNascimento = data.dataNascimento.toString();
@@ -57,6 +58,7 @@ export class UpdateComponent implements OnInit {
     let email = localStorage.getItem("email");
     this.service.getCientist(email).subscribe(
       data => {
+        this.submitted = this.pessoa.paga;
         this.pessoa = data;
       }
     );
