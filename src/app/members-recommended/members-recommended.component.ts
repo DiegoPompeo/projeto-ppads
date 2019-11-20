@@ -17,6 +17,11 @@ export class MembersRecommendedComponent implements OnInit {
 
   constructor(private service: ServiceService, private router: Router) { }
 
+  gotoDetails(cientista: Pessoa){
+    localStorage.setItem("det_email", cientista.email);
+    this.router.navigate(["details"]);
+  }
+
   ngOnInit() {
     this.getPessoas();
     this.resultado = localStorage.getItem("nome_pesquisa");
