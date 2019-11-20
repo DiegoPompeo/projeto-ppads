@@ -9,7 +9,7 @@
                 <p class="card-text"><b>Cidade: </b>{{pessoa.cidade}}</p>
                 <p class="card-text"><b>Estado: </b>{{pessoa.estado}}</p>
                 <p class="card-text"><b>Data de nascimento: </b>{{cientista.dataNascimento}}</p>
-                <p class="card-text"><b>Tempo em atividade: </b>{{cientista.inicioDaAtividade}} ano(s)</p>
+                <p class="card-text"><b>Tempo em atividade: </b>{{cientista.inicioDaAtividade}}</p>
                 <p class="card-text"><b>Nivel escolar: </b>{{pessoa.nivelEscolaridade}}</p>
                 <p class="card-text"><b>Empresa: </b>{{pessoa.empresa}}</p>
             </div>
@@ -49,11 +49,28 @@
     </div>
 
     <div class="mb-3">
-        <h3>Amigos em comum</h3>
-        <div *ngFor="let amigo of amigosEmComum">
+        <h3>Amigos de {{pessoa.nome}}</h3>
+        <div *ngFor="let a of listaAmigos">
             <div class="container mt-3">
                 <div class="row">
-                    <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
+                    <img src="https://uifaces.co/images/man.svg" alt="" style="width: 180px;">
+                </div>
+                <div class="row text-center">
+                    <span>{{amigo.nome}}</span>
+                </div>
+                <div scope="row">
+                    <div class="btn btn-info" (click)="gotoDetails(amigo)">Ver perfil</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h3>Amigos em comum</h3>
+        <div *ngFor="let a of listaAmigos">
+            <div class="container mt-3">
+                <div class="row">
+                    <img src="https://uifaces.co/images/man.svg" alt="" style="width: 180px;">
                 </div>
                 <div class="row text-center">
                     <span>{{amigo.nome}}</span>

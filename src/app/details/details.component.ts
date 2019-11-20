@@ -37,14 +37,38 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(["details"]);
   }
 
+  getAmigos(){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("det_email")
+            && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            } else if(data[i].emailRemetente == localStorage.getItem("det_email")
+            && (data[i].aceite == true)){
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            }
+          }
+        }
+      }
+    );
+  }
+
   ngOnInit() {
     this.Detalhe();
     this.searchPosts();
     this.verificaSolicitacao();
     this.getAmigos();
-    this.getDetAmigos();
-    this.intersecao();
-    this.verificaRecomendar()
+    this.verificaRecomendar();
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
@@ -204,68 +228,6 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  intersecao() {
-    this.getAmigos();
-    this.getDetAmigos();
-    for (let i = 0; i < this.listaAmigos.length; i++) {
-      for (let j = 0; j < this.listaAmigosDetails.length; j++) {
-        if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
-          this.amigosEmComum.push(this.listaAmigos[i]);
-        }
-      }
-    }
-  }
-
-  getAmigos() {
-    this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                }
-              );
-            }
-          }
-        }
-      }
-    );
-  }
-
-  getDetAmigos() {
-    return this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                }
-              );
-            }
-          }
-        }
-      }
-    );
-  }
+  
 
 }
