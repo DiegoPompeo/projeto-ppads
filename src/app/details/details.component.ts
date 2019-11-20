@@ -35,8 +35,8 @@ export class DetailsComponent implements OnInit {
   gotoDetails(cientista: Pessoa){
     localStorage.setItem("det_email", cientista.email);
     this.router.navigate(["details"]);
-  }
-  
+    this.ngOnInit();
+  }  
 
   ngOnInit() {
     this.Detalhe();
