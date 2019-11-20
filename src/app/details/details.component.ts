@@ -184,7 +184,19 @@ export class DetailsComponent implements OnInit {
         let final = array[2] + "/" + array[1] + "/" + array[0];
         this.cientista.dataNascimento = final.toString();
 
-        this.cientista.inicioDaAtividade = data.inicioDaAtividade.toString();
+        let str2 = data.inicioDaAtividade;
+        const now = new Date();
+        const past = new Date(str2);
+        const dif = Math.abs(now.getTime() - past.getTime());
+        const days = Math.floor(dif / (1000 * 60 * 60 * 24));
+
+        if(days < 365){
+          let final2 = Math.floor(days/12);
+          this.cientista.inicioDaAtividade = final2.toString() + " mes(es)";
+        } else {
+          let final2 = Math.floor(days/365);
+          this.cientista.inicioDaAtividade = final2.toString() + " ano(s)";
+        }
         
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
