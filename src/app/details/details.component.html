@@ -50,16 +50,14 @@
 
     <div class="mb-3">
         <h3>Amigos de {{pessoa.nome}}</h3>
-        <div *ngFor="let a of listaAmigosDetails">
+        <div *ngFor="let a of listaAmigosDetails" class="row">
             <div class="container mt-3">
-                <div class="row">
-                    <img src="https://uifaces.co/images/man.svg" alt="" style="width: 180px;">
-                </div>
-                <div class="row text-center">
-                    <span>{{a.nome}}</span>
-                </div>
-                <div scope="row">
-                    <div class="btn btn-info" (click)="gotoDetails(a)">Ver perfil</div>
+                <div class="card mr-3 mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">{{a.nome}}</h4>
+                        <p class="card-text">{{a.email}}</p>
+                    </div>
+                    <div class="btn btn-info" (click)="gotoDetails(a)">Ver detalhes</div>
                 </div>
             </div>
         </div>
