@@ -50,15 +50,17 @@
 
     <div class="mb-3">
         <h3>Amigos de {{pessoa.nome}}</h3>
-        <div *ngFor="let a of listaAmigosDetails" style="width:200px">
-            <div class="card mr-3 mb-3">
-                <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
-                    style="width:100%">
-                <div class="card-body">
-                    <h4 class="card-title">{{a.nome}}</h4>
-                    <p class="card-text">{{a.email}}</p>
+        <div class="row">
+            <div *ngFor="let a of listaAmigosDetails" style="width:200px">
+                <div class="card mr-3 mb-3">
+                    <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
+                        style="width:100%">
+                    <div class="card-body">
+                        <h4 class="card-title">{{a.nome}}</h4>
+                        <p class="card-text">{{a.email}}</p>
+                    </div>
+                    <div class="btn btn-info" (click)="gotoDetails(a)">Ver detalhes</div>
                 </div>
-                <div class="btn btn-info" (click)="gotoDetails(a)">Ver detalhes</div>
             </div>
         </div>
     </div>
