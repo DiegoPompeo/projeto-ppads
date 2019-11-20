@@ -12,7 +12,7 @@ export class MembersRecommendedComponent implements OnInit {
 
   pessoa: Pessoa;
   cientist: Pessoa;
-  cientists: Pessoa[];
+  cientists: Pessoa[] = new Array();
   resultado: string;
 
   constructor(private service: ServiceService, private router: Router) { }
@@ -24,11 +24,16 @@ export class MembersRecommendedComponent implements OnInit {
 
   getPessoas(){    
     let nome = localStorage.getItem("nome_pesquisa");    
-    this.service
-    .findByName(nome)
-    .subscribe(
+    this.service.listar().subscribe(
       data => {
-        this.cientists = data;
+        for (let i = 0; i < data.length; i++) {
+          let interesses = data[i].interesse.split(",");
+          for (let j = 0; j < interesses.length; j++) {
+            if (interesses[j] == nome) {
+              this.cientists.push(data[i]);
+            }            
+          }         
+        }
       }
     );
   }
