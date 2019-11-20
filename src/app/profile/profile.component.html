@@ -12,7 +12,7 @@
             <p class="mb-3 text">Estado: <b>{{cientist.estado}}</b></p>
             <p class="mb-3 text">Nível Escolar: <b>{{cientist.nivelEscolaridade}}</b></p>
             <p class="mb-3 text">Data de nascimento: <b>{{pessoa.dataNascimento}}</b></p>
-            <p class="mb-3 text">Anos em atividade: <b>{{pessoa.inicioDaAtividade}} ano(s)</b></p>
+            <p class="mb-3 text">Anos em atividade: <b>{{pessoa.inicioDaAtividade}}</b></p>
             <button class="btn btn-block btn-info" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
             <div *ngIf="cientist.paga">
                 <a routerLink="/search" class="btn btn-block btn-info mt-3">Pesquisar membros</a>

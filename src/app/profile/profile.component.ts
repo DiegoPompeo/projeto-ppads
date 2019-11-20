@@ -66,7 +66,7 @@ export class ProfileComponent implements OnInit {
         let final = array[2] + "/" + array[1] + "/" + array[0];
         this.pessoa.dataNascimento = final.toString();
 
-        let str2 = data.inicioDaAtividade.toString();
+        let str2 = data.inicioDaAtividade;
         const now = new Date();
         const past = new Date(str2);
         const dif = Math.abs(now.getTime() - past.getTime());
@@ -74,10 +74,10 @@ export class ProfileComponent implements OnInit {
 
         if(days < 365){
           let final2 = Math.ceil(days/12);
-          this.pessoa.inicioDaAtividade = final2.toString();
+          this.pessoa.inicioDaAtividade = final2.toString() + "mes(es)";
         } else {
           let final2 = Math.ceil(days/365);
-          this.pessoa.inicioDaAtividade = final2.toString();
+          this.pessoa.inicioDaAtividade = final2.toString() + "ano(s)";
         }
         
         this.cientist = data;
