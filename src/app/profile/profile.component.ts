@@ -70,13 +70,13 @@ export class ProfileComponent implements OnInit {
         const now = new Date();
         const past = new Date(str2);
         const dif = Math.abs(now.getTime() - past.getTime());
-        const days = Math.ceil(dif / (1000 * 60 * 60 * 24));
+        const days = Math.floor(dif / (1000 * 60 * 60 * 24));
 
         if(days < 365){
-          let final2 = Math.ceil(days/12);
+          let final2 = Math.floor(days/12);
           this.pessoa.inicioDaAtividade = final2.toString() + " mes(es)";
         } else {
-          let final2 = Math.ceil(days/365);
+          let final2 = Math.floor(days/365);
           this.pessoa.inicioDaAtividade = final2.toString() + " ano(s)";
         }
         
