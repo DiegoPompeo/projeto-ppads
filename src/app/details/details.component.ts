@@ -198,8 +198,8 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    var amigos;
-    var detAmigos;
+    var amigos: Pessoa[];
+    var detAmigos: Pessoa[];
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
@@ -246,7 +246,7 @@ export class DetailsComponent implements OnInit {
         }
         for (let i = 0; i < amigos.length; i++) {
           for (let j = 0; j < detAmigos.length; j++) {
-            if (amigos[i].email == detAmigos.email) {
+            if (amigos[i].email == detAmigos[j].email) {
               this.amigosEmComum.push(amigos[i]);
             }
           }
