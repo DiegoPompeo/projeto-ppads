@@ -244,8 +244,11 @@ export class DetailsComponent implements OnInit {
     const arrayEmailAmigos = this.listaAmigos.map(
       element => element.email);
 
+    console.log(arrayEmailAmigos);
+
     const arrayEmailDetails = this.listaAmigosDetails.map(
       element => element.email);
+    console.log(arrayEmailDetails);
 
     for (let i = 0; i < arrayEmailAmigos.length; i++) {
       for (let j = 0; j < arrayEmailDetails.length; j++) {
