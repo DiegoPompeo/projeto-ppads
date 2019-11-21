@@ -28,55 +28,41 @@ export class DetailsComponent implements OnInit {
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
-  array1 = [];
-  array2 = [];  
   amigosEmComum = [];
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
+          if (data[i].aceite === true) {
+            if (data[i].emailMandatario == localStorage.getItem("det_email")) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            } else if (data[i].emailRemetente == localStorage.getItem("det_email")) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            } else if (data[i].emailMandatario == localStorage.getItem("email")) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
-                  this.array1.push(data.email);
                 }
               );
-            } else if (data[i].emailRemetente == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
+            } else if (data[i].emailRemetente == localStorage.getItem("email")) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
-                  this.array1.push(data.email);
                 }
               );
             }
+            this.amigosEmComum = this.listaAmigosDetails.filter(x => this.listaAmigos.includes(x));
           }
         }
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                  this.array2.push(data.email);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                  this.array2.push(data.email);
-                }
-              );
-            }
-          }
-        } 
       }
     );
   }
@@ -85,19 +71,7 @@ export class DetailsComponent implements OnInit {
     this.Detalhe();
     this.searchPosts();
     this.verificaSolicitacao();
-    this.verificaRecomendar();   
-    for (let i = 0; i < this.array1.length; i++) {
-      for (let j = 0; j < this.array2.length; j++) {
-        if (this.array1[i] == this.array2[j]) {
-          this.service.getCientist(this.array1[i]).subscribe(
-            data => {
-              this.amigosEmComum.push(data);
-            }
-          );
-        }        
-      }      
-    }
-    console.log(this.amigosEmComum);
+    this.verificaRecomendar();
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
@@ -257,6 +231,4 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  intersecao() {    
-  }
 }
