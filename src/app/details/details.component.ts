@@ -30,7 +30,23 @@ export class DetailsComponent implements OnInit {
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum = [];
 
-  constructor(private service: ServiceService, private router: Router) {
+  constructor(private service: ServiceService, private router: Router) {    
+  }
+
+  ngOnInit() {
+    this.Detalhe();
+    this.searchPosts();
+    this.verificaSolicitacao();
+    this.verificaRecomendar();
+    this.intersecao();
+
+    this.emailLogado = localStorage.getItem("email");
+    if (!(this.emailLogado == localStorage.getItem("det_email"))) {
+      this.auth = true;
+    }
+  }
+
+  intersecao(){
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
@@ -64,18 +80,6 @@ export class DetailsComponent implements OnInit {
         }
       }
     );
-  }
-
-  ngOnInit() {
-    this.Detalhe();
-    this.searchPosts();
-    this.verificaSolicitacao();
-    this.verificaRecomendar();
-
-    this.emailLogado = localStorage.getItem("email");
-    if (!(this.emailLogado == localStorage.getItem("det_email"))) {
-      this.auth = true;
-    }
   }
 
   verificaRecomendar() {
