@@ -25,11 +25,11 @@ export class DetailsComponent implements OnInit {
   pessoaRecomendada: PessoaRecomendada = new PessoaRecomendada();
   listaRecomendadas: PessoaRecomendada[];
 
-  listaAmigos: Pessoa[] = new Array<Pessoa>();
-  listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
-  amigosEmComum: Pessoa[] = new Array<Pessoa>();
-  auxAmigos: Pessoa[] = new Array<Pessoa>();
-  auxAmigosDet: Pessoa[] = new Array<Pessoa>();
+  listaAmigos: Pessoa[];
+  listaAmigosDetails: Pessoa[];
+  amigosEmComum: Pessoa[];
+  auxAmigos: Pessoa[] ;
+  auxAmigosDet: Pessoa[];
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
