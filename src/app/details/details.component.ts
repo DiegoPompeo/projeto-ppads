@@ -70,8 +70,7 @@ export class DetailsComponent implements OnInit {
               );
             }
           }
-        }
-        this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x));   
+        } 
       }
     );
   }
@@ -81,7 +80,7 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.verificaSolicitacao();
     this.verificaRecomendar();
-    this.intersecao();
+    this.amigosEmComum = this.listaAmigos;  
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
