@@ -63,7 +63,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
-                  this.array1.push(data.email);
+                  this.array2.push(data.email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
@@ -71,7 +71,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
-                  this.array1.push(data.email);
+                  this.array2.push(data.email);
                 }
               );
             }
