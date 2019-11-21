@@ -28,8 +28,8 @@ export class DetailsComponent implements OnInit {
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
-  arrayEmailAmigos: any[] = new Array<any>();
-  arrayEmailDetails: any[] = new Array<any>();
+  arrayEmailAmigos = [];
+  arrayEmailDetails = [];
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
   constructor(private service: ServiceService, private router: Router) {
@@ -42,7 +42,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
-                  this.arrayEmailAmigos.push(data[i].email);
+                  this.arrayEmailAmigos.push(data.email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("email")
@@ -50,7 +50,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
-                  this.arrayEmailAmigos.push(data[i].email);
+                  this.arrayEmailAmigos.push(data.email);
                 }
               );
             }
@@ -63,14 +63,14 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
-                  this.arrayEmailDetails.push(data[i].email);
+                  this.arrayEmailDetails.push(data.email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
               && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
-                  this.arrayEmailDetails.push(data[i].email);
+                  this.arrayEmailDetails.push(data.email);
                   this.listaAmigosDetails.push(data);
                 }
               );
