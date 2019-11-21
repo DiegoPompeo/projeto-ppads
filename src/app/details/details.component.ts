@@ -242,6 +242,8 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
+    console.log(this.listaAmigos.length);
+    console.log(this.listaAmigosDetails.length);
     for (let i = 0; i < this.listaAmigos.length; i++) {
       for (let j = 0; j < this.listaAmigosDetails.length; j++) {
         if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
