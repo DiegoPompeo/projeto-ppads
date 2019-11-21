@@ -25,9 +25,9 @@ export class DetailsComponent implements OnInit {
   pessoaRecomendada: PessoaRecomendada = new PessoaRecomendada();
   listaRecomendadas: PessoaRecomendada[];
 
-  listaAmigos: Pessoa[] = new Array<Pessoa>();
-  listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
-  amigosEmComum: Pessoa[] = new Array<Pessoa>();
+  listaAmigos = [];
+  listaAmigosDetails = [];
+  amigosEmComum = [];
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
@@ -242,7 +242,7 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    var resultArray = Object.keys(this.listaAmigos);
+    var resultArray;
     console.log(resultArray.length);
   }
 }
