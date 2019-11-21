@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Pessoa, Amizade, Post, PessoaRecomendada } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-details',
@@ -240,24 +241,22 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    let emailAmigos = [this.listaAmigos];
-    let emailAmigosDet = [this.listaAmigosDetails];    
+    const arrayEmailAmigos = this.listaAmigos.map(
+      element => element.email);
 
-    console.log(emailAmigos.length);
-    console.log(emailAmigosDet.length);
+    const arrayEmailDetails = this.listaAmigosDetails.map(
+      element => element.email);
 
-    for (let i = 0; i < emailAmigos.length; i++) {
-      for (let j = 0; j < emailAmigosDet.length; j++) {
-        if (emailAmigos[i] == emailAmigosDet[j]) {
+    for (let i = 0; i < arrayEmailAmigos.length; i++) {
+      for (let j = 0; j < arrayEmailDetails.length; j++) {
+        if (arrayEmailAmigos[i] == arrayEmailDetails[j]) {
+          this.service.getCientist(arrayEmailAmigos[i]).subscribe(
+            data => {
+              this.amigosEmComum.push(data);
+            }
+          )
         }        
       }      
     }
-    this.listaAmigos.forEach(x => {
-      this.listaAmigosDetails.forEach(y => {
-        if (x.email == y.email) {
-          this.amigosEmComum.push(x);
-        }
-      });
-    });
   }
 }
