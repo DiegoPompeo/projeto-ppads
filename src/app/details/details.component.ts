@@ -97,6 +97,7 @@ export class DetailsComponent implements OnInit {
         }        
       }      
     }
+    console.log(this.amigosEmComum);
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
