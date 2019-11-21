@@ -70,8 +70,8 @@ export class DetailsComponent implements OnInit {
               && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
-                  this.arrayEmailDetails.push(data.email);
                   this.listaAmigosDetails.push(data);
+                  this.arrayEmailDetails.push(data.email);
                 }
               );
             }
@@ -247,16 +247,12 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {    
-    console.log(this.arrayEmailAmigos);
-    console.log(this.arrayEmailAmigos.length);  
-    
-    console.log(this.arrayEmailDetails);
-    console.log(this.arrayEmailDetails.length);
-
-    this.service.getCientist("1@email.com").subscribe(
-      data => {
-        this.amigosEmComum.push(data);
-        }
-      );  
+    for (let i = 0; i < Object.keys(this.listaAmigos).length; i++) {
+      for (let j = 0; j < Object.keys(this.listaAmigosDetails).length; j++) {
+        if (this.listaAmigos[i].email.toString() == this.listaAmigosDetails[j].email.toString()) {
+         this.amigosEmComum.push(this.listaAmigos[i]);
+        }        
+      }
+    }
   }
 }
