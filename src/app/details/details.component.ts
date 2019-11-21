@@ -28,6 +28,8 @@ export class DetailsComponent implements OnInit {
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
+  arrayEmailAmigos = [];
+  arrayEmailDetails = [];
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
   constructor(private service: ServiceService, private router: Router) {
@@ -40,6 +42,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.arrayEmailAmigos.push(data[i].email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("email")
@@ -47,6 +50,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.arrayEmailAmigos.push(data[i].email);
                 }
               );
             }
@@ -59,12 +63,14 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
+                  this.arrayEmailDetails.push(data[i].email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
               && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
+                  this.arrayEmailDetails.push(data[i].email);
                   this.listaAmigosDetails.push(data);
                 }
               );
@@ -241,20 +247,16 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {    
-    const arrayEmailAmigos = this.listaAmigos.map(
-      element => element.email);
-    console.log(this.listaAmigos);
-    console.log(arrayEmailAmigos);
+    console.log(this.arrayEmailAmigos);
+    console.log(this.arrayEmailAmigos.length);  
+    
+    console.log(this.arrayEmailDetails);
+    console.log(this.arrayEmailDetails.length);
 
-    const arrayEmailDetails = this.listaAmigosDetails.map(
-      element => element.email);
-    console.log(this.listaAmigosDetails);
-    console.log(arrayEmailDetails);
-
-    for (let i = 0; i < arrayEmailAmigos.length; i++) {
-      for (let j = 0; j < arrayEmailDetails.length; j++) {
-        if (arrayEmailAmigos[i] == arrayEmailDetails[j]) {
-          this.service.getCientist(arrayEmailAmigos[i]).subscribe(
+    for (let i = 0; i < this.arrayEmailAmigos.length; i++) {
+      for (let j = 0; j < this.arrayEmailDetails.length; j++) {
+        if (this.arrayEmailAmigos[i] == this.arrayEmailDetails[j]) {
+          this.service.getCientist(this.arrayEmailAmigos[i]).subscribe(
             data => {
               this.amigosEmComum.push(data);
             }
