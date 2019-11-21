@@ -25,11 +25,11 @@ export class DetailsComponent implements OnInit {
   pessoaRecomendada: PessoaRecomendada = new PessoaRecomendada();
   listaRecomendadas: PessoaRecomendada[];
 
-  listaAmigos: Pessoa[];
-  listaAmigosDetails: Pessoa[];
-  amigosEmComum: Pessoa[];
-  auxAmigos: Pessoa[] ;
-  auxAmigosDet: Pessoa[];
+  listaAmigos: Pessoa[] = new Array<Pessoa>();
+  listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
+  amigosEmComum: Pessoa[] = new Array<Pessoa>();
+  emailAmigos: String[];
+  emailDetAmigos: String[];
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
@@ -41,6 +41,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.emailAmigos.push(data[i].email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("email")
@@ -48,6 +49,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.emailAmigos.push(data[i].email);
                 }
               );
             }
@@ -60,6 +62,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
+                  this.emailDetAmigos.push(data[i].email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
@@ -67,6 +70,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
+                  this.emailDetAmigos.push(data[i].email);
                 }
               );
             }
@@ -244,25 +248,10 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    this.auxAmigos = this.listaAmigos;
-    this.auxAmigosDet = this.listaAmigosDetails;
 
-    console.log(this.auxAmigos.length);
-    console.log(this.auxAmigos);
-    console.log(this.auxAmigosDet.length);
-    console.log(this.auxAmigosDet);
-
-    for (let i = 0; i < this.auxAmigos.length; i++) {
-      for (let j = 0; j < this.auxAmigosDet.length; j++) {
-        if (this.listaAmigos[i].email == this.auxAmigosDet[j].email) {
-          this.service.getCientist(this.auxAmigos[i].email).subscribe(
-            data => {
-              this.amigosEmComum.push(data);
-            }
-          );
-        }      
-      }      
-    }
-  }
+    console.log(this.emailAmigos.length);
+    console.log(this.emailAmigos);
+    console.log(this.emailDetAmigos.length);
+    console.log(this.emailDetAmigos);
 
 }
