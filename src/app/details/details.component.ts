@@ -253,5 +253,5 @@ export class DetailsComponent implements OnInit {
     console.log(this.emailAmigos);
     console.log(this.emailDetAmigos.length);
     console.log(this.emailDetAmigos);
-
+  }
 }
