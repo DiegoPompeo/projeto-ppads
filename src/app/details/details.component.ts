@@ -36,8 +36,6 @@ export class DetailsComponent implements OnInit {
     this.Detalhe();
     this.searchPosts();
     this.verificaSolicitacao();
-    this.getAmigos();
-    this.getDetAmigos();
     this.verificaRecomendar();
     this.intersecao();
 
@@ -242,7 +240,7 @@ export class DetailsComponent implements OnInit {
         }
         for (let i = 0; i < this.listaAmigos.length; i++) {
           for (let j = 0; j < this.listaAmigosDetails.length; j++) {
-            if (this.listaAmigos[i] == this.listaAmigosDetails[j]) {
+            if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
               this.amigosEmComum.push(this.listaAmigos[i]);
             }
           }
@@ -250,58 +248,6 @@ export class DetailsComponent implements OnInit {
       }
     );
 
-  }
-
-  getAmigos() {
-    this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                }
-              );
-            }
-          }
-        }
-      }
-    );
-  }
-
-  getDetAmigos() {
-    this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                }
-              );
-            }
-          }
-        }
-      }
-    );
   }
 
 }
