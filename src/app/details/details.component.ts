@@ -247,6 +247,9 @@ export class DetailsComponent implements OnInit {
     this.auxAmigos = this.listaAmigos;
     this.auxAmigosDet = this.listaAmigosDetails;
 
+    console.log(this.auxAmigos.length);
+    console.log(this.auxAmigosDet);
+
     for (let i = 0; i < this.auxAmigos.length; i++) {
       for (let j = 0; j < this.auxAmigosDet.length; j++) {
         if (this.listaAmigos[i].email == this.auxAmigosDet[j].email) {
