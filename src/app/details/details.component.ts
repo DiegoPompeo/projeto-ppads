@@ -241,8 +241,7 @@ export class DetailsComponent implements OnInit {
 
   intersecao() {
     let emailAmigos = [this.listaAmigos];
-    let emailAmigosDet = [this.listaAmigosDetails];
-    
+    let emailAmigosDet = [this.listaAmigosDetails];    
 
     console.log(emailAmigos.length);
     console.log(emailAmigosDet.length);
