@@ -88,9 +88,7 @@ export class DetailsComponent implements OnInit {
     this.verificaRecomendar();    
     console.log(this.array1);
     console.log(this.array2);
-    var teste1 = [2,3];
-    var teste2 = [1,3]
-    console.log(teste1.filter(x => teste2.includes(x)));
+    console.log(this.array1.filter(x => this.array2.includes(x)));
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
