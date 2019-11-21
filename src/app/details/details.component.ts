@@ -247,6 +247,7 @@ export class DetailsComponent implements OnInit {
       for (let j = 0; j < this.listaAmigosDetails.length; j++) {
         if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
           console.log("Oi");
+          this.amigosEmComum.push(this.listaAmigos[i]);
         }
       }
     }
