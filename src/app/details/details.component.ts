@@ -28,8 +28,6 @@ export class DetailsComponent implements OnInit {
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
-  emailAmigos: String[] = new Array();
-  emailDetAmigos: String[] = new Array();
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
@@ -41,7 +39,6 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
-                  this.emailAmigos.push(data[i].email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("email")
@@ -49,7 +46,6 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
-                  this.emailAmigos.push(data[i].email);
                 }
               );
             }
@@ -62,7 +58,6 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
-                  this.emailDetAmigos.push(data[i].email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
@@ -70,7 +65,6 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
-                  this.emailDetAmigos.push(data[i].email);
                 }
               );
             }
@@ -248,10 +242,7 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-
-    console.log(this.emailAmigos.length);
-    console.log(this.emailAmigos);
-    console.log(this.emailDetAmigos.length);
-    console.log(this.emailDetAmigos);
+    var resultArray = Object.keys(this.listaAmigos);
+    console.log(resultArray.length);
   }
 }
