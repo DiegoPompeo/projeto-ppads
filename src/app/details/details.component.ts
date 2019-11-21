@@ -70,11 +70,11 @@ export class DetailsComponent implements OnInit {
             }
           }
         }
-        this.amigosEmComum = this.listaAmigos;
         for (let i = 0; i < this.listaAmigos.length; i++) {
+          console.log("Ola");
           for (let j = 0; j < this.listaAmigosDetails.length; j++) {
             if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
-              
+              console.log("Oi");
             }
           }
         }
