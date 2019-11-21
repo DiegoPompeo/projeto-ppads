@@ -243,11 +243,9 @@ export class DetailsComponent implements OnInit {
 
   intersecao() {
     for (let i = 0; i < this.listaAmigos.length; i++) {
-      console.log("Ola");
       for (let j = 0; j < this.listaAmigosDetails.length; j++) {
         if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
-          console.log("Oi");
-          this.amigosEmComum.push(this.listaAmigos[i]);
+          this.amigosEmComum.push(this.listaAmigosDetails[j]);
         }
       }
     }
