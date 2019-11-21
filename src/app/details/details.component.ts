@@ -240,16 +240,9 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    let emailAmigos = [];
-    let emailAmigosDet = [];
+    let emailAmigos = [this.listaAmigos];
+    let emailAmigosDet = [this.listaAmigosDetails];
     
-    for (let x of this.listaAmigos) {
-      emailAmigos.push(x.email);
-    }
-
-    for (let x of this.listaAmigosDetails) {
-      emailAmigos.push(x.email);
-    }
 
     console.log(emailAmigos.length);
     console.log(emailAmigosDet.length);
@@ -257,11 +250,6 @@ export class DetailsComponent implements OnInit {
     for (let i = 0; i < emailAmigos.length; i++) {
       for (let j = 0; j < emailAmigosDet.length; j++) {
         if (emailAmigos[i] == emailAmigosDet[j]) {
-          this.service.getCientist(emailAmigos[i]).subscribe(
-            data => {
-              this.amigosEmComum.push(data);
-            }
-          )
         }        
       }      
     }
