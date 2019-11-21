@@ -28,6 +28,8 @@ export class DetailsComponent implements OnInit {
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
+  auxAmigos: Pessoa[] = new Array<Pessoa>();
+  auxAmigosDet: Pessoa[] = new Array<Pessoa>();
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
@@ -242,12 +244,13 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    console.log(this.listaAmigos.length);
-    console.log(this.listaAmigosDetails.length);
-    for (let i = 0; i < this.listaAmigos.length; i++) {
-      for (let j = 0; j < this.listaAmigosDetails.length; j++) {
-        if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
-          this.service.getCientist(this.listaAmigos[i].email).subscribe(
+    this.auxAmigos = this.listaAmigos;
+    this.auxAmigosDet = this.listaAmigosDetails;
+
+    for (let i = 0; i < this.auxAmigos.length; i++) {
+      for (let j = 0; j < this.auxAmigosDet.length; j++) {
+        if (this.listaAmigos[i].email == this.auxAmigosDet[j].email) {
+          this.service.getCientist(this.auxAmigos[i].email).subscribe(
             data => {
               this.amigosEmComum.push(data);
             }
