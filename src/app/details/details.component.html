@@ -30,7 +30,7 @@
                 {{pessoa.curtida}} cientista(s) recomendaram {{pessoa.nome}}
             </button>
             <button (click)="desrecomendar()" *ngIf="recomendou" class="btn btn-danger">
-                Desfazer
+                {{pessoa.curtida}} Desfazer
             </button>
         </div>
     </div>
