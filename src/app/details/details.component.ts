@@ -31,6 +31,8 @@ export class DetailsComponent implements OnInit {
   arrayEmailAmigos = [];
   arrayEmailDetails = [];
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
+  countListaAmigos = 0;
+  countDetailsAmigos = 0;
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
@@ -43,6 +45,7 @@ export class DetailsComponent implements OnInit {
                 data => {
                   this.listaAmigos.push(data);
                   this.arrayEmailAmigos.push(data.email);
+                  this.countListaAmigos++;
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("email")
@@ -51,6 +54,7 @@ export class DetailsComponent implements OnInit {
                 data => {
                   this.listaAmigos.push(data);
                   this.arrayEmailAmigos.push(data.email);
+                  this.countListaAmigos++;
                 }
               );
             }
@@ -64,6 +68,7 @@ export class DetailsComponent implements OnInit {
                 data => {
                   this.listaAmigosDetails.push(data);
                   this.arrayEmailDetails.push(data.email);
+                  this.countDetailsAmigos++;
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
@@ -72,6 +77,7 @@ export class DetailsComponent implements OnInit {
                 data => {
                   this.listaAmigosDetails.push(data);
                   this.arrayEmailDetails.push(data.email);
+                  this.countDetailsAmigos++;
                 }
               );
             }
@@ -247,8 +253,10 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {    
-    for (let i = 0; i < Object.keys(this.listaAmigos).length; i++) {
-      for (let j = 0; j < Object.keys(this.listaAmigosDetails).length; j++) {
+    console.log(this.countListaAmigos);
+    console.log(this.countDetailsAmigos);
+    for (let i = 0; i < this.countListaAmigos; i++) {
+      for (let j = 0; j < this.countDetailsAmigos; j++) {
         if (this.listaAmigos[i].email.toString() == this.listaAmigosDetails[j].email.toString()) {
          this.amigosEmComum.push(this.listaAmigos[i]);
         }        
