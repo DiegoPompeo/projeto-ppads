@@ -198,8 +198,8 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    var amigos: Pessoa[];
-    var detAmigos: Pessoa[];
+    var amigos: Pessoa[] = new Array();
+    var detAmigos: Pessoa[] = new Array();
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
