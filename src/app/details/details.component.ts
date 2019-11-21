@@ -69,9 +69,7 @@ export class DetailsComponent implements OnInit {
               );
             }
           }
-        }
-
-        
+        }        
       }
     );
   }
@@ -242,7 +240,6 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    var resultArray;
-    console.log(resultArray.length);
+    console.log(this.listaAmigos.length);
   }
 }
