@@ -256,7 +256,7 @@ export class DetailsComponent implements OnInit {
     for (let i of this.arrayEmailAmigos) {
       for (let j of this.arrayEmailDetails) {
         if (i == j) {
-          this.service.getCientist(i).subscribe(
+          this.service.getCientist("1@email.com").subscribe(
             data => {
               this.amigosEmComum.push(data);
             }
