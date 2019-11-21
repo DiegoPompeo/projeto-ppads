@@ -253,16 +253,10 @@ export class DetailsComponent implements OnInit {
     console.log(this.arrayEmailDetails);
     console.log(this.arrayEmailDetails.length);
 
-    for (let i of this.arrayEmailAmigos) {
-      for (let j of this.arrayEmailDetails) {
-        if (i == j) {
-          this.service.getCientist("1@email.com").subscribe(
-            data => {
-              this.amigosEmComum.push(data);
-            }
-          );
+    this.service.getCientist("1@email.com").subscribe(
+      data => {
+        this.amigosEmComum.push(data);
         }
-      }
-    }
+      );  
   }
 }
