@@ -240,14 +240,15 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  intersecao() {
+  intersecao() {    
     const arrayEmailAmigos = this.listaAmigos.map(
       element => element.email);
-
+    console.log(this.listaAmigos);
     console.log(arrayEmailAmigos);
 
     const arrayEmailDetails = this.listaAmigosDetails.map(
       element => element.email);
+    console.log(this.listaAmigosDetails);
     console.log(arrayEmailDetails);
 
     for (let i = 0; i < arrayEmailAmigos.length; i++) {
