@@ -60,7 +60,6 @@ export class DetailsComponent implements OnInit {
                 }
               );
             }
-            this.amigosEmComum = this.listaAmigosDetails.filter(x => this.listaAmigos.includes(x));
           }
         }
       }
