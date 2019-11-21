@@ -81,6 +81,7 @@ export class DetailsComponent implements OnInit {
         }
       }
     );
+    console.log(this.listaAmigos);
     this.amigosEmComum = this.listaAmigos;
   }
 
