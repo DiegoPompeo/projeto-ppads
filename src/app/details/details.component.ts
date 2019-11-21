@@ -86,9 +86,9 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.verificaSolicitacao();
     this.verificaRecomendar();    
+    console.log(this.array1);
+    console.log(this.array2);
     console.log(this.array1.filter(x => this.array2.includes(x)));
-    this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x)); 
-    console.log(this.amigosEmComum);
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
