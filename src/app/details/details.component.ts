@@ -29,8 +29,8 @@ export class DetailsComponent implements OnInit {
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
-  array1 = [2,3];
-  array2 = [1,3];
+  array1 = [];
+  array2 = [];
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaAmizade().subscribe(
@@ -42,6 +42,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.array1.push(data.email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("email")
@@ -49,6 +50,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.array1.push(data.email);
                 }
               );
             }
@@ -61,6 +63,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
+                  this.array1.push(data.email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
@@ -68,6 +71,7 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
+                  this.array1.push(data.email);
                 }
               );
             }
