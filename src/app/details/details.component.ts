@@ -80,7 +80,7 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.verificaSolicitacao();
     this.verificaRecomendar();
-    this.amigosEmComum = this.listaAmigos;  
+    this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x));  
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
