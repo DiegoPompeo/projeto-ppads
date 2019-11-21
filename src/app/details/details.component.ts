@@ -201,11 +201,7 @@ export class DetailsComponent implements OnInit {
 
   intersecao() {
     for (let i = 0; i < this.listaAmigos.length; i++) {
-      for (let j = 0; j < this.listaAmigosDetails.length; j++) {
-        if (this.listaAmigos[i] == this.listaAmigosDetails[j]) {
-          this.amigosEmComum.push(this.listaAmigos[i]);
-        }
-      }
+      this.amigosEmComum.push(this.listaAmigos[i]);
     }
   }
 
