@@ -27,10 +27,10 @@
             <button class="btn btn-dark mr-3" [disabled]="desabilitaSolicitacao" (click)="solicitarAmizade()">Solicitar
                 amizade</button>
             <button (click)="recomendar()" *ngIf="!recomendou" class="btn btn-dark">
-                {{pessoa.curtida}} cientista(s) recomendaram {{pessoa.nome}}
+                {{curtir}} cientista(s) recomendaram {{pessoa.nome}}
             </button>
             <button (click)="desrecomendar()" *ngIf="recomendou" class="btn btn-danger">
-                {{pessoa.curtida}} Desfazer
+                {{curtir}} Desfazer
             </button>
         </div>
     </div>

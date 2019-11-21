@@ -22,6 +22,7 @@ export class DetailsComponent implements OnInit {
   desabilita: boolean;
   recomendou = false;
   curtidas: string;
+  curtir: number;
   amizade: Amizade = new Amizade();
   pessoaRecomendada: PessoaRecomendada = new PessoaRecomendada();
   listaRecomendadas: PessoaRecomendada[];
@@ -134,6 +135,7 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
+    this.curtir++;
     this.recomendou = true;
   }
 
@@ -167,6 +169,7 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
+    this.curtir--;
     this.recomendou = false;
   }
 
@@ -229,6 +232,7 @@ export class DetailsComponent implements OnInit {
           this.cientista.inicioDaAtividade = final2.toString() + " ano(s)";
         }
 
+        this.curtir = data.curtida;
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
       }
