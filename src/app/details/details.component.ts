@@ -30,6 +30,55 @@ export class DetailsComponent implements OnInit {
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
   constructor(private service: ServiceService, private router: Router) {
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            } else if (data[i].emailRemetente == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            }
+          }
+        }
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            }
+          }
+        }
+        for (let i = 0; i < this.listaAmigos.length; i++) {
+          for (let j = 0; j < this.listaAmigosDetails.length; j++) {
+            if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
+              this.amigosEmComum.push(this.listaAmigos[i]);
+            }
+          }
+        }
+      }
+    );
   }
 
   ngOnInit() {
@@ -198,62 +247,6 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    var amigos: Pessoa[] = new Array();
-    var detAmigos: Pessoa[] = new Array();
-    this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                  amigos.push(data);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                  amigos.push(data);
-                }
-              );
-            }
-          }
-        }
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                  detAmigos.push(data);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                  detAmigos.push(data);
-                }
-              );
-            }
-          }
-        }
-        for (let i = 0; i < amigos.length; i++) {
-          for (let j = 0; j < detAmigos.length; j++) {
-            if (amigos[i].email == detAmigos[j].email) {
-              this.amigosEmComum.push(amigos[i]);
-            }
-          }
-        }
-      }
-    );
-
   }
 
 }
