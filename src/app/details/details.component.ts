@@ -242,9 +242,7 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    for (let i = 0; i < this.listaAmigos.length; i++) {
-      this.amigosEmComum.push(this.listaAmigos[i]);
-    }
+    this.amigosEmComum = this.listaAmigos;
   }
 
 }
