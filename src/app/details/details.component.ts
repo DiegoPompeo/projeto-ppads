@@ -200,6 +200,8 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
+    this.getAmigos();
+    this.getDetAmigos();
     for (let i = 0; i < this.listaAmigos.length; i++) {
       for (let j = 0; j < this.listaAmigosDetails.length; j++) {
         if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
@@ -236,7 +238,7 @@ export class DetailsComponent implements OnInit {
   }
 
   getDetAmigos() {
-    return this.service.listaAmizade().subscribe(
+    this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
