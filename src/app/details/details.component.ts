@@ -248,6 +248,8 @@ export class DetailsComponent implements OnInit {
     this.auxAmigosDet = this.listaAmigosDetails;
 
     console.log(this.auxAmigos.length);
+    console.log(this.auxAmigos);
+    console.log(this.auxAmigosDet.length);
     console.log(this.auxAmigosDet);
 
     for (let i = 0; i < this.auxAmigos.length; i++) {
