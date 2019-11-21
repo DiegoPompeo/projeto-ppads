@@ -252,5 +252,12 @@ export class DetailsComponent implements OnInit {
         }        
       }      
     }
+    this.listaAmigos.forEach(x => {
+      this.listaAmigosDetails.forEach(y => {
+        if (x.email == y.email) {
+          this.amigosEmComum.push(x);
+        }
+      });
+    });
   }
 }
