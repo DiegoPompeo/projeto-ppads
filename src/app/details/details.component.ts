@@ -15,7 +15,7 @@ export class DetailsComponent implements OnInit {
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
-  interesses: any;emailLogado: string;
+  interesses: any; emailLogado: string;
   auth: boolean = false;
   desabilitaSolicitacao = false;
   desabilita: boolean;
@@ -38,7 +38,7 @@ export class DetailsComponent implements OnInit {
     this.verificaSolicitacao();
     this.getAmigos();
     this.getDetAmigos();
-    this.verificaRecomendar();    
+    this.verificaRecomendar();
     this.intersecao();
 
     this.emailLogado = localStorage.getItem("email");
@@ -68,16 +68,16 @@ export class DetailsComponent implements OnInit {
       })
   }
 
-  recomendar() {   
+  recomendar() {
     let existe: boolean;
 
     this.service.listaRecomendacao().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
-          data[i].emailRecomendou == localStorage.getItem("det_email")) {
+            data[i].emailRecomendou == localStorage.getItem("det_email")) {
             existe = true;
-          }          
+          }
         }
       }
     );
@@ -85,10 +85,10 @@ export class DetailsComponent implements OnInit {
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
     this.pessoaRecomendada.desfazer = false;
 
-    if(!existe){  
-      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
-    } else {  
-      this.service.recomenda(this.pessoaRecomendada).subscribe(data => {});
+    if (!existe) {
+      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+    } else {
+      this.service.recomenda(this.pessoaRecomendada).subscribe(data => { });
     }
 
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
@@ -101,16 +101,16 @@ export class DetailsComponent implements OnInit {
     this.recomendou = true;
   }
 
-  desrecomendar() {   
+  desrecomendar() {
     let existe: boolean;
 
     this.service.listaRecomendacao().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
-          data[i].emailRecomendou == localStorage.getItem("det_email")) {
+            data[i].emailRecomendou == localStorage.getItem("det_email")) {
             existe = true;
-          }          
+          }
         }
       }
     );
@@ -118,10 +118,10 @@ export class DetailsComponent implements OnInit {
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
     this.pessoaRecomendada.desfazer = true;
 
-    if(!existe){  
-      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
-    } else {  
-      this.service.desrecomenda(this.pessoaRecomendada).subscribe(data => {});
+    if (!existe) {
+      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+    } else {
+      this.service.desrecomenda(this.pessoaRecomendada).subscribe(data => { });
     }
 
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
@@ -161,8 +161,8 @@ export class DetailsComponent implements OnInit {
             && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
           } else if (data[i].emailRemetente == localStorage.getItem("email")
-          && data[i].emailMandatario == localStorage.getItem("det_email")
-          && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
+            && data[i].emailMandatario == localStorage.getItem("det_email")
+            && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
           }
         }
@@ -170,7 +170,7 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  Detalhe(){
+  Detalhe() {
     let email = localStorage.getItem("det_email");
     this.service.getCientist(email).subscribe(
       data => {
@@ -185,14 +185,14 @@ export class DetailsComponent implements OnInit {
         const dif = Math.abs(now.getTime() - past.getTime());
         const days = Math.floor(dif / (1000 * 60 * 60 * 24));
 
-        if(days < 365){
-          let final2 = Math.floor(days/12);
+        if (days < 365) {
+          let final2 = Math.floor(days / 12);
           this.cientista.inicioDaAtividade = final2.toString() + " mes(es)";
         } else {
-          let final2 = Math.floor(days/365);
+          let final2 = Math.floor(days / 365);
           this.cientista.inicioDaAtividade = final2.toString() + " ano(s)";
         }
-        
+
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
       }
@@ -200,9 +200,56 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    for (let i = 0; i < this.listaAmigos.length; i++) {
-      this.amigosEmComum.push(this.listaAmigos[i]);
-    }
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            } else if (data[i].emailRemetente == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            }
+          }
+        }
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            }
+          }
+        }
+        for (let i = 0; i < this.listaAmigos.length; i++) {
+          for (let j = 0; j < this.listaAmigosDetails.length; j++) {
+            if (this.listaAmigos[i] == this.listaAmigosDetails[j]) {
+              this.amigosEmComum.push(this.listaAmigos[i]);
+            }
+          }
+        }
+      }
+    );
+
   }
 
   getAmigos() {
