@@ -28,8 +28,8 @@ export class DetailsComponent implements OnInit {
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
-  arrayEmailAmigos = [];
-  arrayEmailDetails = [];
+  arrayEmailAmigos: any[] = new Array<any>();
+  arrayEmailDetails: any[] = new Array<any>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
   constructor(private service: ServiceService, private router: Router) {
