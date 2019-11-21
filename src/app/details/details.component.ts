@@ -184,7 +184,7 @@ export class DetailsComponent implements OnInit {
         const days = Math.floor(dif / (1000 * 60 * 60 * 24));
 
         if (days < 365) {
-          let final2 = Math.floor(days / 12);
+          let final2 = Math.floor(days / 30);
           this.cientista.inicioDaAtividade = final2.toString() + " mes(es)";
         } else {
           let final2 = Math.floor(days / 365);
