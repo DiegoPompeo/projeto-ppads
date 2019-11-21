@@ -77,7 +77,6 @@ export class DetailsComponent implements OnInit {
             }
           }
         }        
-      this.amigosEmComum = this.listaAmigos;
       }
     );
   }
