@@ -80,7 +80,7 @@ export class DetailsComponent implements OnInit {
         }
       }
     );
-    this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x));
+    this.amigosEmComum = this.listaAmigos;
   }
 
   verificaRecomendar() {
