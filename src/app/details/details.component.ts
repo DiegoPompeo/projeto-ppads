@@ -82,13 +82,12 @@ export class DetailsComponent implements OnInit {
                 }
               );
             }
-          }
-          console.log(this.listaAmigos);
-          console.log(this.listaAmigosDetails);
-        }
+          }          
+        }        
       }
     );
-    
+    console.log(this.listaAmigos);
+    console.log(this.listaAmigosDetails);    
   }
 
   verificaRecomendar() {
