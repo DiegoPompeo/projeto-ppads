@@ -87,7 +87,8 @@ export class DetailsComponent implements OnInit {
       }
     );
     console.log(this.listaAmigos);
-    console.log(this.listaAmigosDetails);    
+    console.log(this.listaAmigosDetails);
+    console.log(this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x)))
   }
 
   verificaRecomendar() {
