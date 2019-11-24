@@ -71,7 +71,7 @@ export class DetailsComponent implements OnInit {
               && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
-                  this.listaAmigosDetails.push(data);
+                  this.listaAmigosDetails.push(data);                  
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")
@@ -86,13 +86,12 @@ export class DetailsComponent implements OnInit {
         }
       }
     );
-    var count = 0;
-    for (var k in this.listaAmigosDetails) {
-      if (this.listaAmigosDetails.hasOwnProperty(k)) {
-        count++;
-      }
-    }
-    console.log(count);
+    var arr = [];
+    setTimeout(function() {
+      arr.push(1, 2, 3);
+    }, 5000);
+    console.log(arr.length);
+    console.log(arr);
   }
 
   verificaRecomendar() {
