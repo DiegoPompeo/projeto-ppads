@@ -31,6 +31,8 @@ export class DetailsComponent implements OnInit {
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
+  show = false;
+
   constructor(private service: ServiceService, private router: Router) {
   }
 
@@ -47,7 +49,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-
+  showAmigosComum(){
+    this.show = true
+  }
 
   intersecao() {    
     this.service.verificaAmizade().subscribe(
