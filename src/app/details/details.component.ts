@@ -90,6 +90,8 @@ export class DetailsComponent implements OnInit {
       let aux = [this.emailsAmigos];
       let auxDet = [this.emailsAmigosDet];
       let intersection = aux.filter(x => auxDet.includes(x));
+      console.log(aux);
+      console.log(auxDet);
       console.log(intersection);
   }
 
