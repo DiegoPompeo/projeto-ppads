@@ -89,7 +89,7 @@ export class ServiceService {
  
   //ListarAmizade
   listaAmizade(){
-    let promise = new Promise((resolve, reject) => {
+    let promise = new Promise<Amizade[]>((resolve, reject) => {
       this.http.get<Amizade[]>(this.url + "/listaAmizade")
       .toPromise().then(
         res => {
@@ -98,6 +98,11 @@ export class ServiceService {
       )      
     });
     return promise;
+  }
+
+  //VerificaAmizade
+  verificaAmizade(){
+    return this.http.get<Amizade[]>(this.url + "/listaAmizade");
   }
  
   //AceitaSolicitacao
