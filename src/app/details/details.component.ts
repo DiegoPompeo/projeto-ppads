@@ -31,7 +31,7 @@ export class DetailsComponent implements OnInit {
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum = [];
 
-  constructor(private service: ServiceService, private router: Router) {    
+  constructor(private service: ServiceService, private router: Router) {
   }
 
   ngOnInit() {
@@ -47,20 +47,20 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  intersecao(){
+  intersecao() {
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
             if (data[i].emailMandatario == localStorage.getItem("email")
-            && (data[i].aceite == true)) {
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
                 }
               );
-            } else if(data[i].emailRemetente == localStorage.getItem("email")
-            && (data[i].aceite == true)){
+            } else if (data[i].emailRemetente == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
@@ -68,25 +68,31 @@ export class DetailsComponent implements OnInit {
               );
             }
             if (data[i].emailMandatario == localStorage.getItem("det_email")
-            && (data[i].aceite == true)) {
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
                 }
               );
-            } else if(data[i].emailRemetente == localStorage.getItem("det_email")
-            && (data[i].aceite == true)){
+            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
                 }
               );
             }
-          }          
-        }        
+          }
+        }
       }
     );
-    console.log(Object.keys(this.amigosEmComum).length);
+    var count = 0;
+    for (var k in this.amigosEmComum) {
+      if (this.amigosEmComum.hasOwnProperty(k)) {
+        count++;
+      }
+    }
+    console.log(count);
   }
 
   verificaRecomendar() {
