@@ -71,14 +71,14 @@ export class DetailsComponent implements OnInit {
             && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
-                  this.listaAmigos.push(data);
+                  this.listaAmigosDetails.push(data);
                 }
               );
             } else if(data[i].emailRemetente == localStorage.getItem("det_email")
             && (data[i].aceite == true)){
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
-                  this.listaAmigos.push(data);
+                  this.listaAmigosDetails.push(data);
                 }
               );
             }
