@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Pessoa, Amizade, Post, PessoaRecomendada } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
-import { element } from 'protractor';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -48,47 +48,45 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    setTimeout(function () {
-      this.service.listaAmizade().subscribe(
-        data => {
-          for (let i = 0; i < data.length; i++) {
-            if (data[i].aceite == true) {
-              if (data[i].emailMandatario == localStorage.getItem("email")
-                && (data[i].aceite == true)) {
-                this.service.getCientist(data[i].emailRemetente).subscribe(
-                  data => {
-                    this.listaAmigos.push(data);
-                  }
-                );
-              } else if (data[i].emailRemetente == localStorage.getItem("email")
-                && (data[i].aceite == true)) {
-                this.service.getCientist(data[i].emailMandatario).subscribe(
-                  data => {
-                    this.listaAmigos.push(data);
-                  }
-                );
-              }
-              if (data[i].emailMandatario == localStorage.getItem("det_email")
-                && (data[i].aceite == true)) {
-                this.service.getCientist(data[i].emailRemetente).subscribe(
-                  data => {
-                    this.listaAmigosDetails.push(data);
-                  }
-                );
-              } else if (data[i].emailRemetente == localStorage.getItem("det_email")
-                && (data[i].aceite == true)) {
-                this.service.getCientist(data[i].emailMandatario).subscribe(
-                  data => {
-                    this.listaAmigosDetails.push(data);
-                  }
-                );
-              }
+    of(this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            } else if (data[i].emailRemetente == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            }
+            if (data[i].emailMandatario == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);                  
+                }
+              );
+            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
             }
           }
         }
-      );
-    }, 5000);
-    console.log(this.listaAmigosDetails.length);
+      })
+    );
+
     this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x));
   }
 
