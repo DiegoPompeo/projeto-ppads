@@ -29,7 +29,7 @@ export class DetailsComponent implements OnInit {
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
-  amigosEmComum = [];
+  amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
   constructor(private service: ServiceService, private router: Router) {
   }
@@ -52,30 +52,26 @@ export class DetailsComponent implements OnInit {
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
+            if (data[i].emailMandatario == localStorage.getItem("email")) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
                 }
               );
-            } else if (data[i].emailRemetente == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
+            } else if (data[i].emailRemetente == localStorage.getItem("email")) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
                 }
               );
             }
-            if (data[i].emailMandatario == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
+            if (data[i].emailMandatario == localStorage.getItem("det_email")) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);                  
                 }
               );
-            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
+            } else if (data[i].emailRemetente == localStorage.getItem("det_email")) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
@@ -83,13 +79,19 @@ export class DetailsComponent implements OnInit {
               );
             }
             if(data[i].emailMandatario != localStorage.getItem("email")
-            && data[i].emailRemetente == localStorage.getItem("det_email")
-            && (data[i].aceite == true)){
-              this.amigosEmComum.push(data[i]);
+            && data[i].emailRemetente == localStorage.getItem("det_email")){
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.amigosEmComum.push(data);
+                }
+              );
             } else if(data[i].emailMandatario == localStorage.getItem("email")
-            && data[i].emailRemetente != localStorage.getItem("det_email")
-            && (data[i].aceite == true)){
-              this.amigosEmComum.push(data[i]);
+            && data[i].emailRemetente != localStorage.getItem("det_email")){
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.amigosEmComum.push(data);
+                }
+              );
             }
           }
         }
