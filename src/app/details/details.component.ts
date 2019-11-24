@@ -84,10 +84,8 @@ export class DetailsComponent implements OnInit {
             }
           }
         }
-      });
-      setInterval(() =>
-       this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x)), 
-       1000);
+      });      
+      this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x));
   }
 
   verificaRecomendar() {

@@ -89,7 +89,15 @@ export class ServiceService {
  
   //ListarAmizade
   listaAmizade(){
-    return this.http.get<Amizade[]>(this.url + "/listaAmizade")
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<Amizade[]>(this.url + "/listaAmizade")
+      .toPromise().then(
+        res => {
+          resolve();
+        }
+      )      
+    });
+    return promise;
   }
  
   //AceitaSolicitacao
