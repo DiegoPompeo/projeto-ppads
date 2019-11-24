@@ -87,8 +87,8 @@ export class DetailsComponent implements OnInit {
       }
     );
     var count = 0;
-    for (var k in this.amigosEmComum) {
-      if (this.amigosEmComum.hasOwnProperty(k)) {
+    for (var k in this.listaAmigosDetails) {
+      if (this.listaAmigosDetails.hasOwnProperty(k)) {
         count++;
       }
     }
