@@ -47,8 +47,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  intersecao() {
-    this.service.listaAmizade().subscribe(
+  intersecao() {    
+    of(
+      this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
@@ -84,10 +85,9 @@ export class DetailsComponent implements OnInit {
             }
           }
         }
-      })
-    of(this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x))
+      }),this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x))
+      
     );
-
   }
 
   verificaRecomendar() {
