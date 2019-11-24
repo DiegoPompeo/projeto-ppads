@@ -65,10 +65,10 @@
     </div>
 
     <div class="mb-3">
-        <div *ngFor="!show">
+        <div *ngIf="!show">
             <button class="btn btn-info" (click)="showAmigosComum()">Mostrar amigos em comum com {{pessoa.nome}}</button>
         </div>
-        <div *ngFor="show">
+        <div *ngIf="show">
             <app-friends-com [listaAmigos]="listaAmigos" [listaAmigosDetails]=listaAmigosDetails></app-friends-com>
         </div>
     </div>
