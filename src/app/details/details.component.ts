@@ -86,20 +86,8 @@ export class DetailsComponent implements OnInit {
         }        
       }
     );
-
-    this.listaAmigos.forEach(i => {
-      console.log(i);
-      this.listaAmigosDetails.forEach(
-        j => {
-          console.log(j);
-          if (i.email == j.email) {
-            this.amigosEmComum.push(i);
-          }
-        }
-      )
-    });
-
     console.log(this.listaAmigos);
+    console.log(this.listaAmigos[0]);
     console.log(this.listaAmigosDetails);
     console.log(this.amigosEmComum);
   }
