@@ -65,18 +65,9 @@
     </div>
 
     <div class="mb-3">
-        <h3>Amigos em comum com {{pessoa.nome}}</h3>
-        <div class="row">
-            <div *ngFor="let a of amigosEmComum" style="width:200px">
-                <div class="card mr-3 mb-3">
-                    <img class="card-img-top" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar"
-                        style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">{{a.nome}}</h4>
-                        <p class="card-text">{{a.email}}</p>
-                    </div>
-                </div>
-            </div>
+        <button class="btn btn-info" >Clique aqui para ver amigos em comum com {{pessoa.nome}}</button>
+        <div class="show">
+            <app-friends-com [listaAmigos]="listaAmigos" [listaAmigosDetails]=listaAmigosDetails></app-friends-com>
         </div>
     </div>
 </div>

@@ -20,6 +20,7 @@ import { PostComponent } from './post/post.component';
 import { GlossarySuccessComponent } from './glossary-success/glossary-success.component';
 import { SearchComponent } from './search/search.component';
 import { ListFriendsComponent } from './list-friends/list-friends.component';
+import { FriendsComComponent } from './friends-com/friends-com.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ListFriendsComponent } from './list-friends/list-friends.component';
     PostComponent,
     GlossarySuccessComponent,
     SearchComponent,
-    ListFriendsComponent
+    ListFriendsComponent,
+    FriendsComComponent
   ],
   imports: [
     BrowserModule,
