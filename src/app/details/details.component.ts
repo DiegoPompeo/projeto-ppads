@@ -86,10 +86,7 @@ export class DetailsComponent implements OnInit {
         }        
       }
     );
-    console.log(this.listaAmigos);
-    console.log(this.listaAmigos[0]);
-    console.log(this.listaAmigosDetails);
-    console.log(this.amigosEmComum);
+    console.log(Object.keys(this.amigosEmComum).length);
   }
 
   verificaRecomendar() {
