@@ -28,13 +28,13 @@ export class MembersRecommendedComponent implements OnInit {
   }
 
   getPessoas(){    
-    let nome = localStorage.getItem("nome_pesquisa");    
+    let nome = localStorage.getItem("nome_pesquisa").toLowerCase();    
     this.service.listar().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           let interesses = data[i].interesse.split(",");
           for (let j = 0; j < interesses.length; j++) {
-            if (interesses[j] == nome) {
+            if (interesses[j].toLowerCase() == nome) {
               this.cientists.push(data[i]);
             }            
           }         
