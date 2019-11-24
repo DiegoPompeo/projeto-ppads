@@ -83,7 +83,11 @@ export class DetailsComponent implements OnInit {
               );
             }
             if(data[i].emailMandatario != localStorage.getItem("email")
-            || data[i].emailRemetente != localStorage.getItem("det_email")
+            && data[i].emailRemetente == localStorage.getItem("det_email")
+            && (data[i].aceite == true)){
+              this.amigosEmComum.push(data[i]);
+            } else if(data[i].emailMandatario == localStorage.getItem("email")
+            && data[i].emailRemetente != localStorage.getItem("det_email")
             && (data[i].aceite == true)){
               this.amigosEmComum.push(data[i]);
             }
