@@ -83,6 +83,8 @@ export class DetailsComponent implements OnInit {
               );
             }
           }
+          console.log(this.listaAmigos);
+          console.log(this.listaAmigosDetails);
         }
       }
     );
