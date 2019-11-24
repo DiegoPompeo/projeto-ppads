@@ -34,7 +34,7 @@ export class ListFriendsComponent implements OnInit {
   }
 
   getAmigos(){
-    this.service.listaAmizade().subscribe(
+    this.service.verificaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {

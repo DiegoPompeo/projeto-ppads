@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.searchProfile();
     this.searchPosts();
-    this.service.listaAmizade().subscribe(
+    this.service.verificaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRemetente == localStorage.getItem("email")
@@ -92,7 +92,7 @@ export class ProfileComponent implements OnInit {
   }
   
   aceita(p: Pessoa){
-    this.service.listaAmizade().subscribe(
+    this.service.verificaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == false 
@@ -112,7 +112,7 @@ export class ProfileComponent implements OnInit {
   }
   
   recusa(p: Pessoa){
-    this.service.listaAmizade().subscribe(
+    this.service.verificaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == false 
@@ -132,7 +132,7 @@ export class ProfileComponent implements OnInit {
   }
 
   listaSolicitacao(){
-    this.service.listaAmizade().subscribe(
+    this.service.verificaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRemetente == localStorage.getItem("email")
