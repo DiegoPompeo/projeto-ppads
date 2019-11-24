@@ -86,12 +86,10 @@ export class DetailsComponent implements OnInit {
         }
       }
     );
-    var arr = [];
+    
     setTimeout(function() {
-      arr.push(1, 2, 3);
+      console.log(this.listaAmigosDetails.length);
     }, 5000);
-    console.log(arr.length);
-    console.log(arr);
   }
 
   verificaRecomendar() {
