@@ -30,6 +30,8 @@ export class DetailsComponent implements OnInit {
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum = [];
+  emailsAmigos = [];
+  emailsAmigosDet = [];
 
   constructor(private service: ServiceService, private router: Router) {    
   }
@@ -56,24 +58,28 @@ export class DetailsComponent implements OnInit {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
+                  this.emailsAmigosDet.push(data.email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("det_email")) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
+                  this.emailsAmigosDet.push(data.email);
                 }
               );
             } else if (data[i].emailMandatario == localStorage.getItem("email")) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.emailsAmigos.push(data.email);
                 }
               );
             } else if (data[i].emailRemetente == localStorage.getItem("email")) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
+                  this.emailsAmigos.push(data.email);
                 }
               );
             }
@@ -81,8 +87,10 @@ export class DetailsComponent implements OnInit {
         }
       }
     );
-    console.log(this.listaAmigos);
-    this.amigosEmComum = this.listaAmigos;
+      let aux = [this.emailsAmigos];
+      let auxDet = [this.emailsAmigosDet];
+      let intersection = aux.filter(x => auxDet.includes(x));
+      console.log(intersection);
   }
 
   verificaRecomendar() {
