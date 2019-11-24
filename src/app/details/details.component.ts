@@ -48,48 +48,48 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {
-    this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == true) {
-            if (data[i].emailMandatario == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigos.push(data);
-                }
-              );
-            }
-            if (data[i].emailMandatario == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailRemetente).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);                  
-                }
-              );
-            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
-              && (data[i].aceite == true)) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
-                data => {
-                  this.listaAmigosDetails.push(data);
-                }
-              );
+    setTimeout(function () {
+      this.service.listaAmizade().subscribe(
+        data => {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].aceite == true) {
+              if (data[i].emailMandatario == localStorage.getItem("email")
+                && (data[i].aceite == true)) {
+                this.service.getCientist(data[i].emailRemetente).subscribe(
+                  data => {
+                    this.listaAmigos.push(data);
+                  }
+                );
+              } else if (data[i].emailRemetente == localStorage.getItem("email")
+                && (data[i].aceite == true)) {
+                this.service.getCientist(data[i].emailMandatario).subscribe(
+                  data => {
+                    this.listaAmigos.push(data);
+                  }
+                );
+              }
+              if (data[i].emailMandatario == localStorage.getItem("det_email")
+                && (data[i].aceite == true)) {
+                this.service.getCientist(data[i].emailRemetente).subscribe(
+                  data => {
+                    this.listaAmigosDetails.push(data);
+                  }
+                );
+              } else if (data[i].emailRemetente == localStorage.getItem("det_email")
+                && (data[i].aceite == true)) {
+                this.service.getCientist(data[i].emailMandatario).subscribe(
+                  data => {
+                    this.listaAmigosDetails.push(data);
+                  }
+                );
+              }
             }
           }
         }
-      }
-    );
-    
-    setTimeout(function() {
-      console.log(this.listaAmigosDetails.length);
+      );
     }, 5000);
+    console.log(this.listaAmigosDetails.length);
+    this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x));
   }
 
   verificaRecomendar() {
