@@ -79,10 +79,10 @@ export class DetailsComponent implements OnInit {
             }
           }
         }
+        this.amigosEmComum.push(this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x)));
       }
     );
-    console.log(this.listaAmigos);
-    this.amigosEmComum = this.listaAmigos;
+    
   }
 
   verificaRecomendar() {
