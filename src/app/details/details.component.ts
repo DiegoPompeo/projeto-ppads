@@ -48,7 +48,7 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao() {    
-    this.service.listaAmizade().then(
+    this.service.verificaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
@@ -82,11 +82,15 @@ export class DetailsComponent implements OnInit {
                 }
               );
             }
+            if(data[i].emailMandatario != localStorage.getItem("email")
+            || data[i].emailRemetente != localStorage.getItem("det_email")
+            && (data[i].aceite == true)){
+              this.amigosEmComum.push(data[i]);
+            }
           }
         }
       }
     );      
-    this.amigosEmComum = this.listaAmigos.filter(x => this.listaAmigosDetails.includes(x));
   }
 
   verificaRecomendar() {
