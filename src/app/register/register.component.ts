@@ -99,6 +99,7 @@ export class RegisterComponent implements OnInit {
           this.authService.register(this.pessoa).subscribe(data => { 
           });
           this.msgSuccess = true;
+          this.router.navigate(['register-success'])
         } else {
           this.msgError = true;
         }
